@@ -699,13 +699,13 @@ h3 { font-size: 17px; }
   #sidebar { max-width: calc(100vw - 14px); padding: 6px; border-radius: 17px; }
   .sidebar-tab { min-width: 43px; padding: 7px 8px; gap: 3px; font-size: 9.5px; }
 }
-:global(.center-column-container) { max-width: 980px; margin-inline: auto; }
-:global(.settings-container), :global(.settings-content), :global(.about-container), :global(.updates-container), :global(.status-container), :global(.remux-container) { max-width: 980px; margin-inline: auto; }
-:global(.settings-card), :global(.setting-card), :global(.settings-section), :global(.card), :global(.panel), :global(.about-card), :global(.update-card), :global(.status-card), :global(.remux-card) {
+.center-column-container { max-width: 980px; margin-inline: auto; }
+.settings-container, .settings-content, .about-container, .updates-container, .status-container, .remux-container { max-width: 980px; margin-inline: auto; }
+.settings-card, .setting-card, .settings-section, .card, .panel, .about-card, .update-card, .status-card, .remux-card {
   border-radius: 18px;
 }
-:global(button:hover), :global(.button:hover) { transform: translateY(-1px); }
-:global(button:active), :global(.button:active) { transform: scale(.985); }
+button:hover, .button:hover { transform: translateY(-1px); }
+button:active, .button:active { transform: scale(.985); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
