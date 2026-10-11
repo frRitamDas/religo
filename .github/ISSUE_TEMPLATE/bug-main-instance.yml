@@ -1,5 +1,5 @@
 name: main instance bug report
-description: "report an issue with cobalt.tools or api.cobalt.tools"
+description: "report an issue with the ReliGo website or API"
 labels: ["main instance issue"]
 body:
   - type: textarea

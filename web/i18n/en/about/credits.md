@@ -42,5 +42,5 @@ The processing API is deployed separately from the static website. Availability 
 
 The frontend is licensed under [CC-BY-NC-SA 4.0]({docs.webLicense}). The processing API is licensed under [AGPL-3.0]({docs.apiLicense}).
 
-ReliGo uses adapted open-source components. Original copyright notices, applicable source licenses, and third-party license obligations are retained in the repository. The current logo is intentionally unchanged in this release and is planned for a later branding patch.
+ReliGo uses adapted open-source components. Required original attribution, copyright notices, licence terms, and third-party obligations are retained in the repository. The ReliGo mark and 11.3 release artwork are now part of the project's own user-facing identity.
 </section>

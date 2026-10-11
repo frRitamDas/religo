@@ -2,7 +2,8 @@
 
 The ReliGo frontend is a static web app built with [SvelteKit](https://kit.svelte.dev/) and [Vite](https://vitejs.dev/).
 
-**Version:** 11.3  
+**Website version:** 11.3  
+**API version:** 11.3  
 **Developer:** Ritam Das
 
 ## Configuring
@@ -26,7 +27,7 @@ https://your-religo-domain.example/#https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
 ## License and attribution
-The relevant frontend code remains licensed under [CC-BY-NC-SA-4.0](LICENSE). ReliGo is a derivative of the open-source Cobalt project; retain the original copyright and license notices. The upstream license does not grant rights to use Cobalt's branding or assets. The current logo is retained temporarily and is planned to be replaced in a future patch.
+The frontend is licensed under [CC-BY-NC-SA-4.0](LICENSE). ReliGo is derived from the open-source Cobalt project; retain required upstream attribution, original copyright notices, and licence obligations. ReliGo's user-facing logo and 11.3 release artwork use the ReliGo identity.
 
 ## Open-source acknowledgments
-ReliGo uses SvelteKit, Vite, libav.js, Tabler Icons, Fluent Emoji, Noto Sans Mono, IBM Plex Mono, Redaction, and other open-source packages. Review the individual licenses before redistribution or commercial use.
+ReliGo uses SvelteKit, Vite, libav.js, Tabler Icons, Fluent Emoji, Noto Sans Mono, IBM Plex Mono, Redaction, and other open-source packages. Review individual licenses before redistribution or commercial use.
