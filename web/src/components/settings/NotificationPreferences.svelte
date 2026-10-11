@@ -47,7 +47,7 @@
     <div class="notification-icon">⌁</div>
     <div class="notification-copy">
         <strong>Soft system notifications</strong>
-        <p>Opt in to browser-level ReliGo notices where supported. Your browser controls the final permission; websites cannot silently enable notifications.</p>
+        <p>Enable browser permission and save your preference. This release sends a confirmation notice; routine background alerts are not active yet. Your browser controls final permission.</p>
         <small>{!supported ? "Not supported in this browser" : `Browser permission: ${permission}`}</small>
         {#if message}<div class="message" role="status">{message}</div>{/if}
     </div>
