@@ -3,7 +3,7 @@
  export let locale: "en" | "ru" = "en";
  type CopyStatus = "idle" | "copied" | "manual";
  let copyStatus: CopyStatus = "idle";
- let resetTimer: ReturnType<typeof setTimeout>;
+ let resetTimer: ReturnType<typeof setTimeout> | undefined;
  const copyEndpoint = async () => {
   if (resetTimer) clearTimeout(resetTimer);
   try { if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable"); await navigator.clipboard.writeText(officialApiURL); copyStatus = "copied"; }
