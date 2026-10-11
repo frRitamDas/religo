@@ -63,6 +63,10 @@
 
 <style>
     .home-shell { width:100%; max-width:1240px; margin:0 auto; padding:clamp(6px,1.4vw,18px); box-sizing:border-box; }
+    .ambient { position:absolute; z-index:0; width:clamp(150px,24vw,300px); aspect-ratio:1; border-radius:50%; filter:blur(44px); opacity:.18; pointer-events:none; will-change:transform; animation:ambientDrift 18s ease-in-out infinite alternate; }
+    .ambient-one { top:8%; right:18%; background:linear-gradient(135deg,#6598ff,#b58cff); }
+    .ambient-two { bottom:2%; left:20%; width:clamp(120px,18vw,220px); background:linear-gradient(135deg,#63d9ca,#6a8cff); animation-delay:-8s; }
+    @keyframes ambientDrift { from { transform:translate3d(-10px,-8px,0) scale(.94); } to { transform:translate3d(18px,16px,0) scale(1.06); } }
     .hero { position:relative; overflow:hidden; isolation:isolate; border:1px solid var(--glass-border); border-radius:32px; padding:clamp(22px,4vw,46px); background:radial-gradient(ellipse at 75% 5%,rgba(89,120,255,.2),transparent 36%),radial-gradient(ellipse at 0% 100%,rgba(50,205,180,.12),transparent 40%),linear-gradient(135deg,var(--glass-surface),var(--button)); box-shadow:0 24px 90px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.38); }
     .hero-top,.hero-bottom,.hero-grid,.hero-tags,.section-intro,.system-strip,.system-strip>div { display:flex; align-items:center; justify-content:space-between; gap:18px; }
     .hero-top,.hero-bottom { position:relative; z-index:1; }
@@ -113,5 +117,5 @@
     @media(max-width:950px) { .tool-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .hero-mark { width:180px; margin-right:0; } }
     @media(max-width:620px) { .hero { border-radius:24px; padding:20px 17px; } .hero-grid { min-height:0; } .hero-mark { display:none; } .hero-copy { padding:38px 0 30px; } .hero-bottom { font-size:8px; letter-spacing:.08em; } .section-intro { align-items:flex-start; flex-direction:column; gap:7px; } .section-intro>p { max-width:none; } .tool-grid { gap:9px; } .tool-card { padding:16px; border-radius:18px; } .tool-icon { margin-bottom:18px; } .tool-card p { min-height:100px; font-size:11px; } .system-strip { align-items:flex-start; padding:15px; } }
     @media(max-width:360px) { .tool-grid { grid-template-columns:1fr; } .tool-card p { min-height:0; } .hero-tags span { font-size:9px; } }
-    @media(prefers-reduced-motion:reduce) { .tool-card { transition:none; } .tool-card:hover { transform:none; } }
+    @media(prefers-reduced-motion:reduce) { .ambient { animation:none; } .tool-card { transition:none; } .tool-card:hover { transform:none; } }
 </style>
