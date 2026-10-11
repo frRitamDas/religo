@@ -151,4 +151,14 @@
     @media(max-width:760px) { .metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } .summary-card { align-items:flex-start; flex-direction:column; } }
     @media(max-width:400px) { .status-page { padding:4px; } .status-hero { border-radius:22px; padding:23px 18px; } .metric { padding:14px; } .metric strong { font-size:21px; } .detail-row { font-size:12px; } }
     @media(prefers-reduced-motion:reduce) { .pulse { animation:none; } }
+
+    .status-page { width:min(100%,980px); margin:0 auto; padding:clamp(8px,2vw,24px); gap:22px; }
+    .status-hero { padding:clamp(24px,5vw,52px); border:1px solid var(--button-stroke); border-radius:24px; background:linear-gradient(135deg,var(--button),color-mix(in srgb,var(--button) 88%,var(--blue))); box-shadow:0 16px 50px rgba(20,20,30,.045); }
+    .status-hero h1 { font-size:clamp(36px,6vw,64px); letter-spacing:-.065em; }
+    .status-hero p { max-width:600px; line-height:1.7; color:var(--gray); }
+    .status-hero .eyebrow { letter-spacing:.14em; font-size:10px; }
+    .status-grid { gap:14px; }
+    .status-card, .status-panel, .service-card { border:1px solid var(--button-stroke); border-radius:18px; background:var(--button); box-shadow:0 8px 30px rgba(20,20,30,.035); }
+    @media(max-width:600px) { .status-page { padding:4px 0; } .status-hero { border-radius:19px; } }
+ 
 </style>
