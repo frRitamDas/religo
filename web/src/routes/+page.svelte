@@ -67,10 +67,10 @@
                 <span class="secure-label"><span aria-hidden="true">✳</span> YOUR WORKFLOW</span>
             </div>
             <div class="service-list"><SupportedServices /></div>
-            <main id="cobalt-save" tabindex="-1" data-first-focus>
+            <div id="cobalt-save" tabindex="-1" data-first-focus>
                 <div class="mascot-wrap"><div class="mascot-halo"></div><Meowbalt emotion="smile" /></div>
                 <Omnibox />
-            </main>
+            </div>
             <div class="workbench-bottom">
                 <span><span class="micro-dot"></span> Clean, focused, ready when you are.</span>
                 <span>LINK <span class="tiny-separator">/</span> FORMAT <span class="tiny-separator">/</span> GO</span>
