@@ -2,7 +2,7 @@
 methods, acceptable values, headers, responses and everything else related to making and parsing requests from a ReliGo API instance.
 
 > [!IMPORTANT]
-> hosted api instances (such as `religo-api.onrender.com`) use bot protection and are **not** intended to be used in other projects without explicit permission. if you want to use the ReliGo API, you should [host your own instance](/docs/run-an-instance.md) or ask an instance owner for access.
+> Public API instances may apply rate limits or access controls. If you need a dependable endpoint for your own project, [host your own ReliGo instance](/docs/run-an-instance.md) and configure it for your use case.
 
 - [POST /](#post)
 - [POST /session](#post-session)
