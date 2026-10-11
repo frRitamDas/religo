@@ -72,9 +72,9 @@ if you create fan art of meowbalt, please share it in
     sectionId="licenses"
 />
 
-cobalt api (processing server) code is open source and licensed under [AGPL-3.0]({docs.apiLicense}).
+ReliGo API (processing server) code is open source and licensed under [AGPL-3.0]({docs.apiLicense}).
 
-cobalt frontend code is [source first](https://sourcefirst.com/) and is licensed under [CC-BY-NC-SA 4.0]({docs.webLicense}).
+ReliGo frontend code is [source first](https://sourcefirst.com/) and is licensed under [CC-BY-NC-SA 4.0]({docs.webLicense}).
 
 we had to make frontend source first to stop grifters from profiting off our work
 & from creating malicious clones that deceive people and hurt our public identity.
