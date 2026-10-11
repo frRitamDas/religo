@@ -1,6 +1,5 @@
 <script lang="ts">
     import { t } from "$lib/i18n/translations";
-    import { contacts, docs } from "$lib/env";
 
     import SectionHeading from "$components/misc/SectionHeading.svelte";
 </script>
@@ -11,9 +10,9 @@
     sectionId="summary"
 />
 
-cobalt helps you save anything from your favorite websites: video, audio, photos or gifs. just paste the link and you're ready to rock!
+ReliGo helps you save media from supported websites: video, audio, photos, or GIFs. Paste a link to get started.
 
-no ads, trackers, paywalls, or other nonsense. just a convenient web app that works anywhere, whenever you need it.
+The interface is designed to be straightforward and usable across devices. Availability depends on the processing API configured for this ReliGo instance.
 </section>
 
 <section id="motivation">
@@ -22,8 +21,9 @@ no ads, trackers, paywalls, or other nonsense. just a convenient web app that wo
     sectionId="motivation"
 />
 
-cobalt was created for public benefit, to protect people from ads and malware pushed by alternative downloaders.
-we believe that the best software is safe, open, and accessible. all imput project follow these basic principles.
+ReliGo is a community-maintained fork based on the open-source Cobalt project. The upstream project and its licenses are available at https://github.com/imputnet/cobalt.
+
+This deployment should use an API instance that its operator owns or is authorized to use. Features and availability may differ from the upstream service.
 </section>
 
 <section id="privacy-efficiency">
@@ -32,19 +32,11 @@ we believe that the best software is safe, open, and accessible. all imput proje
     sectionId="privacy-efficiency"
 />
 
-all requests to the backend are anonymous and all information about potential file tunnels is encrypted.
-we have a strict zero log policy and don't store or track *anything* about individual people.
+Some media processing can happen directly in your browser. Requests that need server-side processing are sent to the API instance configured for this deployment.
 
-if a request requires additional processing, such as remuxing or transcoding, cobalt processes media
-directly on your device. this ensures best efficiency and privacy.
+Privacy and logging practices depend on that API operator. Review the operator's privacy policy before using a community instance, and avoid submitting private or sensitive URLs.
 
-if your device doesn't support local processing, then server-based live processing is used instead.
-in this scenario, processed media is streamed directly to client, without ever being stored on server's disk.
-
-you can [enable forced tunneling](/settings/privacy#tunnel) to boost privacy even further.
-when enabled, cobalt will tunnel all downloaded files, not just those that require it.
-no one will know where you download something from, even your network provider.
-all they'll see is that you're using a cobalt instance.
+You can configure a different processing instance in settings if you have a trusted API URL.
 </section>
 
 <section id="community">
@@ -53,15 +45,7 @@ all they'll see is that you're using a cobalt instance.
     sectionId="community"
 />
 
-cobalt is used by countless artists, educators, and content creators to do what they love.
-we're always on the line with our community and work together to make cobalt even more useful.
-feel free to [join the conversation](/about/community)!
+ReliGo's source code and project updates are available on GitHub at https://github.com/frRitamDas/religo. Suggestions and contributions are welcome.
 
-we believe that the future of the internet is open, which is why cobalt is
-[source first](https://sourcefirst.com/) and [easily self-hostable]({docs.instanceHosting}).
-
-if your friend hosts a processing instance, just ask them for a domain and [add it in instance settings](/settings/instances#community).
-
-you can check the source code and contribute [on github]({contacts.github}) at any time.
-we welcome all contributions and suggestions!
+ReliGo is based on Cobalt; see the upstream project for original documentation and licensing information.
 </section>
