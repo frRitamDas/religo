@@ -94,14 +94,20 @@ export type ReliGoSession = {
     exp: number,
 }
 
+type ReliGoInstanceInfo = {
+    version: string,
+    url: string,
+    startTime: string,
+    turnstileSitekey?: string,
+    services: string[]
+}
+
 export type ReliGoServerInfo = {
-    religo: {
-        version: string,
-        url: string,
-        startTime: string,
-        turnstileSitekey?: string,
-        services: string[]
-    },
+    religo: ReliGoInstanceInfo,
+    // The API returns this alias for already-deployed frontend code that still
+    // reads server metadata from info.cobalt. Keep it typed until all clients
+    // have migrated; it does not change the public ReliGo identity.
+    cobalt?: ReliGoInstanceInfo,
     git: {
         branch: string,
         commit: string,
