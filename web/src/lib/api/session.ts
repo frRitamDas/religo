@@ -1,9 +1,9 @@
 import turnstile from "$lib/api/turnstile";
 import { currentApiURL } from "$lib/api/api-url";
 
-import type { CobaltSession, CobaltErrorResponse, CobaltSessionResponse } from "$lib/types/api";
+import type { ReliGoSession, ReliGoErrorResponse, ReliGoSessionResponse } from "$lib/types/api";
 
-let cache: CobaltSession | undefined;
+let cache: ReliGoSession | undefined;
 
 export const requestSession = async () => {
     const apiEndpoint = `${currentApiURL()}/session`;
@@ -17,7 +17,7 @@ export const requestSession = async () => {
         };
     }
 
-    const response: CobaltSessionResponse = await fetch(apiEndpoint, {
+    const response: ReliGoSessionResponse = await fetch(apiEndpoint, {
         method: "POST",
         redirect: "manual",
         signal: AbortSignal.timeout(10000),
@@ -31,7 +31,7 @@ export const requestSession = async () => {
                 error: {
                     code: "error.api.timed_out"
                 }
-            } as CobaltErrorResponse
+            } as ReliGoErrorResponse
         }
     });
 
@@ -54,7 +54,7 @@ export const getSession = async () => {
         error: {
             code: "error.api.unreachable"
         }
-    } as CobaltErrorResponse
+    } as ReliGoErrorResponse
 
     if (!("status" in newSession)) {
         newSession.exp = currentTime() + newSession.exp;
