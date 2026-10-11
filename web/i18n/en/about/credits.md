@@ -13,9 +13,9 @@
 
 ReliGo is developed and maintained by **Ritam Das**.
 
-**Website version:** 11.3
+**Website version:** 11.4
 
-**API version:** 11.3
+**API version:** 11.4
 
 **Project:** ReliGo
 
@@ -42,5 +42,5 @@ The processing API is deployed separately from the static website. Availability 
 
 The frontend is licensed under [CC-BY-NC-SA 4.0]({docs.webLicense}). The processing API is licensed under [AGPL-3.0]({docs.apiLicense}).
 
-ReliGo uses adapted open-source components. Required original attribution, copyright notices, licence terms, and third-party obligations are retained in the repository. The ReliGo mark and 11.3 release artwork are now part of the project's own user-facing identity.
+ReliGo uses adapted open-source components. Required original attribution, copyright notices, licence terms, and third-party obligations are retained in the repository. The ReliGo mark and 11.4 release artwork are now part of the project's own user-facing identity.
 </section>
