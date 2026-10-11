@@ -96,7 +96,7 @@ export const savingHandler = async ({ url, request, oldTaskId }: SavingHandlerAr
     if (response.status === "tunnel") {
         downloadButtonState.set("check");
 
-        const probeResult = await API.probeCobaltTunnel(response.url);
+        const probeResult = await API.probeReliGoTunnel(response.url);
 
         if (probeResult === 200) {
             downloadButtonState.set("done");
