@@ -94,8 +94,8 @@ export type CobaltSession = {
     exp: number,
 }
 
-export type CobaltServerInfo = {
-    cobalt: {
+export type ReliGoServerInfo = {
+    religo: {
         version: string,
         url: string,
         startTime: string,
