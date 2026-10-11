@@ -63,7 +63,7 @@
         translate: -50% 0;
         isolation: isolate;
         width: max-content;
-        max-width: calc(100vw - 28px);
+        max-width: calc(100vw - 24px);
         box-sizing: border-box;
         height: auto;
         padding: 7px 9px;
@@ -84,13 +84,9 @@
         justify-content: center;
         gap: 4px;
         padding: 0;
-        overflow-x: auto;
-        overflow-y: visible;
+        flex: 1 1 auto;
+        overflow: hidden;
         scrollbar-width: none;
-    }
-
-    #sidebar-tabs::-webkit-scrollbar {
-        display: none;
     }
 
     #sidebar :global(.sidebar-inner-container) {
@@ -107,7 +103,7 @@
             translate: -50% 0;
             bottom: calc(10px + env(safe-area-inset-bottom));
             width: max-content;
-            max-width: calc(100vw - 20px);
+            max-width: calc(100vw - 16px);
             padding: 7px 9px;
             gap: 0;
             backdrop-filter: blur(28px) saturate(180%);
@@ -118,8 +114,8 @@
 
         #sidebar-tabs {
             max-width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
+            flex: 1 1 auto;
+            overflow: hidden;
             justify-content: flex-start;
         }
 
@@ -146,9 +142,4 @@
         }
     }
 
-    @media screen and (orientation: landscape) {
-        :global([data-iphone="true"]) #sidebar {
-            left: 50%;
-        }
-    }
 </style>
