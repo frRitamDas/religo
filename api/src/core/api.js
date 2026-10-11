@@ -49,16 +49,20 @@ export const runAPI = async (express, app, __dirname, isPrimary = true) => {
     const startTimestamp = startTime.getTime();
 
     const getServerInfo = () => {
+        const info = {
+            version: version,
+            url: env.apiURL,
+            startTime: `${startTimestamp}`,
+            turnstileSitekey: env.sessionEnabled ? env.turnstileSitekey : undefined,
+            services: [...env.enabledServices].map(e => {
+                return friendlyServiceName(e);
+            }),
+        };
+
         return JSON.stringify({
-            religo: {
-                version: version,
-                url: env.apiURL,
-                startTime: `${startTimestamp}`,
-                turnstileSitekey: env.sessionEnabled ? env.turnstileSitekey : undefined,
-                services: [...env.enabledServices].map(e => {
-                    return friendlyServiceName(e);
-                }),
-            },
+            religo: info,
+            // Compatibility for a previously cached ReliGo frontend bundle.
+            cobalt: info,
             git,
         });
     }
