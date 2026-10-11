@@ -1,7 +1,7 @@
 {
     "name": "@religo/api",
     "description": "ReliGo media processing API",
-    "version": "11.3.0",
+    "version": "11.4.0",
     "author": "Ritam Das",
     "exports": "./src/religo.js",
     "type": "module",
