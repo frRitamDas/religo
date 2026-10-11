@@ -45,14 +45,25 @@
             document.querySelector("[data-first-focus]");
         to_focus?.focus();
 
-        // Keep historical release-note links inside the ReliGo repository.
-        document.querySelectorAll<HTMLAnchorElement>(
-            "#changelog-parent .changelog-body a[href^=\"https://github.com/imputnet/cobalt\"]"
-        ).forEach((link) => {
-            link.href = link.href.replace(
-                "https://github.com/imputnet/cobalt",
-                "https://github.com/frRitamDas/religo"
-            );
+        // Route historical links to the ReliGo repository, not the upstream brand.
+        const upstreamRepo = "https://github.com/imputnet/cobalt";
+        const religoRepo = "https://github.com/frRitamDas/religo";
+        const retiredCommunityLinks = [
+            "https://twitter.com/justusecobalt",
+            "https://x.com/justusecobalt",
+            "https://discord.gg/pQPt8HBUPu"
+        ];
+        document.querySelectorAll<HTMLAnchorElement>("#changelog-parent .changelog-body a").forEach((link) => {
+            if (link.href.startsWith(upstreamRepo)) {
+                const suffix = link.href.slice(upstreamRepo.length);
+                if (/^\\/(issues|pull|commit|compare|pkgs)(\\/|#|$)/i.test(suffix)) {
+                    link.href = religoRepo;
+                } else {
+                    link.href = religoRepo + suffix;
+                }
+            } else if (retiredCommunityLinks.some((url) => link.href.startsWith(url))) {
+                link.href = religoRepo;
+            }
         });
 
         // Present historical release notes under the current ReliGo identity.
