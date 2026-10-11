@@ -9,28 +9,11 @@
 
     export let beta = false;
 
-    const firstTabPage = ["save", "remux", "settings"];
-
-    let tab: HTMLElement;
-
     $: currentTab = $page.url.pathname.split("/")[1];
     $: baseTabPath = path.split("/")[1];
 
     $: isTabActive = currentTab === baseTabPath;
 
-    const showTab = (e: HTMLElement) => {
-        if (e) {
-            e.scrollIntoView({
-                inline: firstTabPage.includes(name) ? "end" : "start",
-                block: "nearest",
-                behavior: "smooth",
-            });
-        }
-    };
-
-    $: if (isTabActive && tab) {
-        showTab(tab);
-    }
 </script>
 
 <a
@@ -38,8 +21,6 @@
     class="sidebar-tab"
     class:active={isTabActive}
     href={path}
-    bind:this={tab}
-    on:focus={() => showTab(tab)}
     role="tab"
     aria-selected={isTabActive}
 >
@@ -71,7 +52,6 @@
         text-decoration: none;
         text-decoration-line: none;
         position: relative;
-        scroll-behavior: smooth;
 
         cursor: pointer;
     }
