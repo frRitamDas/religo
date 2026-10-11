@@ -122,4 +122,14 @@
             padding: 0 6px;
         }
     }
+
+    #donate-page-wrapper { padding: clamp(8px,2vw,24px); align-items:flex-start; }
+    #donate-page { width:min(100%,980px); gap:clamp(18px,3vw,30px); }
+    #support-options { gap:18px; }
+    #motivation, #crypto { border-radius:22px; border:1px solid var(--button-stroke); background:var(--button); padding:clamp(18px,3vw,30px); box-shadow:0 10px 32px rgba(20,20,30,.035); }
+    #motivation p { line-height:1.75; }
+    #crypto-section-header { margin-bottom:18px; }
+    #wallet-grid { gap:12px; }
+    @media(max-width:600px) { #support-options { grid-template-columns:minmax(0,1fr); } }
+ 
 </style>
