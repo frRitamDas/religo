@@ -123,3 +123,22 @@ export type ReliGoAPIResponse = ReliGoErrorResponse
                               | ReliGoRedirectResponse
                               | ReliGoTunnelResponse
                               | ReliGoLocalProcessingResponse;
+
+// Backward-compatible type aliases for existing internal modules.
+// These are implementation names only; the website is branded ReliGo.
+export type CobaltErrorResponse = ReliGoErrorResponse;
+type CobaltPartialURLResponse = ReliGoPartialURLResponse;
+type CobaltPickerResponse = ReliGoPickerResponse;
+type CobaltRedirectResponse = ReliGoRedirectResponse;
+type CobaltTunnelResponse = ReliGoTunnelResponse;
+export const CobaltFileMetadataKeys = ReliGoFileMetadataKeys;
+export type CobaltFileMetadata = ReliGoFileMetadata;
+export type CobaltLocalProcessingType = ReliGoLocalProcessingType;
+export type CobaltLocalProcessingResponse = ReliGoLocalProcessingResponse;
+export type CobaltFileUrlType = ReliGoFileUrlType;
+export type CobaltSession = ReliGoSession;
+export type CobaltServerInfo = ReliGoServerInfo;
+export type CobaltSaveRequestBody = ReliGoSaveRequestBody;
+export type CobaltSessionResponse = ReliGoSessionResponse;
+export type CobaltServerInfoResponse = ReliGoServerInfoResponse;
+export type CobaltAPIResponse = ReliGoAPIResponse;
