@@ -98,4 +98,8 @@
             padding: var(--padding);
         }
     }
+
+    .settings-content { gap:12px; padding:18px; border:1px solid var(--button-stroke); background:var(--button); box-shadow:0 8px 28px rgba(20,20,30,.035); }
+    .settings-content.focus { animation:highlight 1.2s; }
+    @media(max-width:750px) { .settings-content { padding:15px; border-radius:16px; } }
 </style>
