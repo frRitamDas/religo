@@ -4,6 +4,7 @@
 
     import SettingsToggle from "$components/buttons/SettingsToggle.svelte";
     import SettingsCategory from "$components/settings/SettingsCategory.svelte";
+    import NotificationPreferences from "$components/settings/NotificationPreferences.svelte";
 </script>
 
 <SettingsCategory
@@ -34,6 +35,10 @@
         title={$t("settings.accessibility.auto_queue.title")}
         description={$t("settings.accessibility.auto_queue.description")}
     />
+</SettingsCategory>
+
+<SettingsCategory sectionId="notifications" title="Notifications">
+    <NotificationPreferences />
 </SettingsCategory>
 
 {#if device.supports.haptics}
