@@ -45,7 +45,7 @@
             document.querySelector("[data-first-focus]");
         to_focus?.focus();
 
-        // Route historical links to the ReliGo repository, not the upstream brand.
+        // Route historical links to ReliGo, never to the original product's community.
         const upstreamRepo = "https://github.com/imputnet/cobalt";
         const religoRepo = "https://github.com/frRitamDas/religo";
         const retiredCommunityLinks = [
@@ -56,13 +56,15 @@
         document.querySelectorAll<HTMLAnchorElement>("#changelog-parent .changelog-body a").forEach((link) => {
             if (link.href.startsWith(upstreamRepo)) {
                 const suffix = link.href.slice(upstreamRepo.length);
-                if (/^\\/(issues|pull|commit|compare|pkgs)(\\/|#|$)/i.test(suffix)) {
-                    link.href = religoRepo;
-                } else {
-                    link.href = religoRepo + suffix;
-                }
+                const obsoleteResource = [
+                    "/issues/", "/pull/", "/pulls/", "/commit/", "/commits/",
+                    "/compare/", "/pkgs/", "/actions/"
+                ].some((prefix) => suffix.startsWith(prefix));
+                link.href = obsoleteResource ? religoRepo : religoRepo + suffix;
+                link.rel = "noopener noreferrer";
             } else if (retiredCommunityLinks.some((url) => link.href.startsWith(url))) {
                 link.href = religoRepo;
+                link.rel = "noopener noreferrer";
             }
         });
 
