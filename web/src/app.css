@@ -627,3 +627,85 @@ a { text-decoration-thickness: 1px; }
 #cobalt[data-ui-density="compact"] .sidebar-tab {
     font-size: 12px;
 }
+
+
+/* ReliGo Studio design system — shared across every route */
+:root {
+  --primary: #f5f5f7;
+  --secondary: #171719;
+  --gray: #74747c;
+  --blue: #356df3;
+  --button: #ffffff;
+  --button-hover: #f0f1f4;
+  --button-press: #e8eaf0;
+  --button-text: #1d1d1f;
+  --button-stroke: rgba(22, 24, 30, .09);
+  --button-box-shadow: 0 0 0 1px var(--button-stroke) inset;
+  --button-elevated: #eceef2;
+  --button-elevated-hover: #e3e6ec;
+  --popup-bg: #ffffff;
+  --popup-stroke: rgba(20, 22, 28, .1);
+  --sidebar-bg: rgba(249,249,251,.88);
+  --sidebar-highlight: #56565f;
+  --sidebar-stroke: rgba(20,22,28,.08);
+  --content-border: transparent;
+  --input-border: #d6d7dd;
+  --border-radius: 14px;
+  --glass-surface: rgba(255,255,255,.82);
+  --glass-border: rgba(22,24,30,.11);
+  --glass-active: #19191d;
+  --glass-active-text: #fff;
+}
+[data-theme="dark"] {
+  --primary: #0b0b0d;
+  --secondary: #f4f4f6;
+  --gray: #9999a2;
+  --blue: #7198ff;
+  --button: #17171b;
+  --button-hover: #222228;
+  --button-press: #2b2b33;
+  --button-text: #f4f4f6;
+  --button-stroke: rgba(255,255,255,.09);
+  --button-elevated: #202025;
+  --button-elevated-hover: #292930;
+  --popup-bg: #19191e;
+  --popup-stroke: rgba(255,255,255,.1);
+  --sidebar-bg: rgba(18,18,21,.9);
+  --sidebar-highlight: #bcbcc5;
+  --sidebar-stroke: rgba(255,255,255,.08);
+  --input-border: #393941;
+  --glass-surface: rgba(23,23,27,.86);
+  --glass-border: rgba(255,255,255,.13);
+  --glass-active: #f4f4f6;
+  --glass-active-text: #111114;
+}
+* { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+html, body { background: var(--primary); }
+button, .button { border-radius: 12px; font-size: 13px; font-weight: 600; transition: background-color .18s ease, border-color .18s ease, transform .18s ease; }
+input, textarea, select { font: inherit; }
+h1,h2,h3,h4,h5,h6 { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: -.045em; font-weight: 650; }
+h1 { font-size: clamp(28px, 3vw, 42px); line-height: 1.08; }
+h2 { font-size: clamp(22px, 2.3vw, 30px); line-height: 1.16; }
+h3 { font-size: 17px; }
+.subtext { line-height: 1.6; }
+.long-text, .long-text *:not(h1,h2,h3,h4,h5,h6) { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.7; }
+#content { background: var(--primary); padding-top: 92px; }
+#sidebar { padding: 7px 9px; gap: 8px; border-radius: 18px; box-shadow: 0 8px 34px rgba(20,20,30,.09), inset 0 1px rgba(255,255,255,.5); }
+.sidebar-tab { font-size: 12px; font-weight: 600; border-radius: 12px; padding: 10px 13px; gap: 8px; letter-spacing: -.015em; }
+.sidebar-tab.active { box-shadow: none; animation: none; }
+.sidebar-tab :global(svg) { width: 17px; height: 17px; }
+@media (max-width: 535px) {
+  #content { padding: calc(18px + env(safe-area-inset-top)) 14px calc(92px + env(safe-area-inset-bottom)); }
+  #sidebar { max-width: calc(100vw - 14px); padding: 6px; border-radius: 17px; }
+  .sidebar-tab { min-width: 43px; padding: 7px 8px; gap: 3px; font-size: 9.5px; }
+}
+:global(.center-column-container) { max-width: 980px; margin-inline: auto; }
+:global(.settings-container), :global(.settings-content), :global(.about-container), :global(.updates-container), :global(.status-container), :global(.remux-container) { max-width: 980px; margin-inline: auto; }
+:global(.settings-card), :global(.setting-card), :global(.settings-section), :global(.card), :global(.panel), :global(.about-card), :global(.update-card), :global(.status-card), :global(.remux-card) {
+  border-radius: 18px;
+}
+:global(button:hover), :global(.button:hover) { transform: translateY(-1px); }
+:global(button:active), :global(.button:active) { transform: scale(.985); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
