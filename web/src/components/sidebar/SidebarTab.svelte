@@ -61,8 +61,8 @@
         gap: 7px;
         padding: 9px 12px;
         color: var(--sidebar-highlight);
-        font-size: 12px;
-        font-weight: 560;
+        font-size: 13px;
+        font-weight: 620;
         opacity: 0.76;
         height: fit-content;
         border-radius: var(--border-radius);
@@ -88,11 +88,12 @@
     }
 
     .sidebar-tab.active {
-        color: var(--sidebar-bg);
-        background: var(--sidebar-highlight);
+        color: var(--glass-active-text, var(--primary));
+        background: var(--glass-active, var(--secondary));
         opacity: 1;
         transform: none;
-        transition: none;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transition: background-color 180ms ease, color 180ms ease;
         animation: pressButton 0.3s;
         cursor: default;
     }
@@ -158,7 +159,7 @@
             gap: 3px;
             padding: 7px 10px;
             min-width: 48px;
-            font-size: 10px;
+            font-size: 10.5px;
         }
 
         .sidebar-tab :global(svg) {
