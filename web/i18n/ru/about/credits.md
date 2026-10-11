@@ -13,10 +13,14 @@
 
 ReliGo разрабатывает и поддерживает **Ritam Das**.
 
-- **Версия сайта:** 11.3
-- **Версия API:** 11.3
-- **Проект:** ReliGo
-- **Исходный код:** [github.com/frRitamDas/religo]({contacts.github})
+**Версия сайта:** 11.3
+
+**Версия API:** 11.3
+
+**Проект:** ReliGo
+
+**Исходный код:** [github.com/frRitamDas/religo]({contacts.github})
+
 </section>
 
 <section id="source">
