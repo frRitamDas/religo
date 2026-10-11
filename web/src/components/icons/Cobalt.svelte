@@ -1,4 +1,5 @@
-<svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 15.6363L0 12.8594L9.47552 8.293L0 3.14038L0 0.363525L12.8575 7.4908V9.21862L0 15.6363Z" fill="white"/>
-    <path d="M11.1425 15.6363V12.8594L20.6181 8.293L11.1425 3.14038V0.363525L24 7.4908V9.21862L11.1425 15.6363Z" fill="white"/>
-</svg>
+<svg width="28" height="28" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ReliGo">
+<defs><linearGradient id="brand" x1="18" y1="16" x2="108" y2="112" gradientUnits="userSpaceOnUse"><stop stop-color="#70e6ff"/><stop offset=".5" stop-color="#8b9aff"/><stop offset="1" stop-color="#c57cff"/></linearGradient><linearGradient id="edge" x1="9" y1="9" x2="119" y2="119" gradientUnits="userSpaceOnUse"><stop stop-color="#80eaff"/><stop offset="1" stop-color="#bf85ff"/></linearGradient></defs>
+<rect x="4" y="4" width="120" height="120" rx="34" fill="#0b1021" stroke="url(#edge)" stroke-width="3"/>
+<path d="M31 25h39c21 0 34 12 34 29 0 13-7 22-19 26l23 23H87L67 82H53v21H31V25Zm22 19v21h17c9 0 14-4 14-11s-5-10-14-10H53Z" fill="url(#brand)" fill-rule="evenodd"/>
+<circle cx="105" cy="102" r="4" fill="#70e6ff"/></svg>

@@ -1,59 +1,11 @@
-<script lang="ts">
-    import { t } from "$lib/i18n/translations";
-    import SectionHeading from "$components/misc/SectionHeading.svelte";
-</script>
+<script lang="ts">import { t } from "$lib/i18n/translations"; import SectionHeading from "$components/misc/SectionHeading.svelte";</script>
+<section id="general"><SectionHeading title={$t("about.heading.general")} sectionId="general" />
+These terms apply when using the ReliGo instance configured for this website. For another API instance, contact its operator for the applicable terms and data-handling information.</section>
+<section id="saving"><SectionHeading title={$t("about.heading.saving")} sectionId="saving" />
+ReliGo helps save media from supported public links. You are responsible for ensuring that your use of downloaded content complies with applicable law, the source platform's terms, and relevant licences.
 
-<section id="general">
-<SectionHeading
-    title={$t("about.heading.general")}
-    sectionId="general"
-/>
-
-these terms are applicable only when using the official ReliGo instance.
-in other cases, you may need to contact the instance hoster for accurate info.
-</section>
-
-<section id="saving">
-<SectionHeading
-    title={$t("about.heading.saving")}
-    sectionId="saving"
-/>
-
-saving functionality simplifies downloading content from the internet
-and we take zero liability for what the saved content is used for.
-
-processing servers operate like advanced proxies and don't ever write any requested content to disk.
-everything is handled in RAM and permanently purged once the tunnel is completed.
-we have no downloading logs and cannot identify anyone.
-
-you can learn more about how tunnels work in [privacy policy](/about/privacy).
-</section>
-
-<section id="responsibility">
-<SectionHeading
-    title={$t("about.heading.responsibility")}
-    sectionId="responsibility"
-/>
-
-you (end user) are responsible for what you do with our tools, how you use and distribute resulting content.
-please be mindful when using content of others and always credit original creators.
-make sure you don't violate any terms or licenses.
-
-when used in educational purposes, always cite sources and credit original creators.
-
-fair use and credits benefit everyone.
-</section>
-
-<section id="abuse">
-<SectionHeading
-    title={$t("about.heading.abuse")}
-    sectionId="abuse"
-/>
-
-we have no way of detecting abusive behavior automatically because ReliGo is fully anonymous.
-ReliGo does not currently publish a dedicated abuse-report email. For non-sensitive reports, use the [ReliGo GitHub issue tracker](https://github.com/frRitamDas/religo/issues). Do not post private URLs, tokens, or personal information in a public issue.
-
-**this email is not intended for user support, you will not get a response if your concern is not related to abuse.**
-
-if you're experiencing issues, you can reach out for support via any preferred method on [the community page](/about/community).
-</section>
+Some requests are processed locally in your browser. Others require the API to fetch, proxy, remux, or transcode media. The API may temporarily handle source URLs, processing parameters, and encrypted tunnel information. Hosting providers and upstream services may process basic operational request data. For details, read the [privacy policy](/about/privacy). Do not submit private URLs, passwords, access tokens, or other sensitive information.</section>
+<section id="responsibility"><SectionHeading title={$t("about.heading.responsibility")} sectionId="responsibility" />
+You are responsible for how you use and distribute saved content. Respect creators' rights, platform terms, and licences; give credit when required and obtain permission where applicable.</section>
+<section id="abuse"><SectionHeading title={$t("about.heading.abuse")} sectionId="abuse" />
+To report a technical issue, use the [ReliGo GitHub issue tracker](https://github.com/frRitamDas/religo/issues). Do not include private URLs, access tokens, or personal information in public reports. Responses are best-effort and are not guaranteed.</section>

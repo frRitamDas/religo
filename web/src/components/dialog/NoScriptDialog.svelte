@@ -10,8 +10,8 @@
                 id="nojs-dialog"
                 meowbalt="error"
                 bodyText={
-                    "cobalt uses javascript for api requests and ui interactions, but it's not available in your browser. "
-                    + "you can still navigate around cobalt, but most functionality won't work."
+                    "ReliGo uses JavaScript for API requests and interface interactions, but JavaScript is unavailable in your browser. "
+                    + "You can still navigate around ReliGo, but most features will not work."
                 }
                 buttons={[
                     {

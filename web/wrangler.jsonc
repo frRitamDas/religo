@@ -1,8 +1,5 @@
 {
-    "name": "cobalt",
+    "name": "religo",
     "compatibility_date": "2025-06-01",
-    "assets": {
-        "directory": "./build",
-        "not_found_handling": "404-page"
-    }
+    "assets": { "directory": "./build", "not_found_handling": "404-page" }
 }

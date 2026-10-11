@@ -4,7 +4,7 @@ import basicSSL from "@vitejs/plugin-basic-ssl";
 import { glob } from "glob";
 import { sveltekit } from "@sveltejs/kit/vite";
 import { createSitemap } from "svelte-sitemap/src/index";
-import { defineConfig, searchForWorkspaceRoot, type PluginOption } from "vite";
+import { defineConfig, loadEnv, searchForWorkspaceRoot, type PluginOption } from "vite";
 
 import { join, basename } from "node:path";
 import { createReadStream } from "node:fs";
@@ -88,7 +88,12 @@ const checkDefaultApiEnv = (): PluginOption => ({
     },
 });
 
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+    const loadedEnv = loadEnv(mode, process.cwd(), "WEB_");
+    for (const [key, value] of Object.entries(loadedEnv)) {
+        if (process.env[key] === undefined) process.env[key] = value;
+    }
+    return ({
     plugins: [
         checkDefaultApiEnv(),
         basicSSL(),
@@ -127,4 +132,5 @@ export default defineConfig({
     optimizeDeps: {
         exclude: ["@imput/libav.js-remux-cli"]
     },
+    });
 });
