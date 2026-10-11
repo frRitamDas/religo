@@ -35,10 +35,6 @@
         gap: var(--padding);
     }
 
-    #support-buttons.two {
-        grid-template-columns: 1fr 1fr;
-    }
-
     #support-buttons.one {
         grid-template-columns: 1fr;
     }
