@@ -1,6 +1,5 @@
 <script lang="ts">
     import { t } from "$lib/i18n/translations";
-
     import SectionHeading from "$components/misc/SectionHeading.svelte";
 </script>
 
@@ -10,9 +9,9 @@
     sectionId="summary"
 />
 
-ReliGo helps you save media from supported websites: video, audio, photos, or GIFs. Paste a link to get started.
+ReliGo is a straightforward media saver for supported public links. Paste a link, review the available options, and save a video, audio track, photo, or GIF.
 
-The interface is designed to be straightforward and usable across devices. Availability depends on the processing API configured for this ReliGo instance.
+The interface adapts to phones, tablets, and desktop screens, keeping the main download flow simple and easy to follow.
 </section>
 
 <section id="motivation">
@@ -21,9 +20,9 @@ The interface is designed to be straightforward and usable across devices. Avail
     sectionId="motivation"
 />
 
-ReliGo is a community-maintained fork based on the open-source Cobalt project. The upstream project and its licenses are available at https://github.com/imputnet/cobalt.
+ReliGo is developed and maintained by **Ritam Das**. The goal is a clean, accessible, and dependable experience for saving media from supported services, with clear project ownership and source-code links.
 
-This deployment should use an API instance that its operator owns or is authorized to use. Features and availability may differ from the upstream service.
+Supported services and available formats may change as external platforms update their systems.
 </section>
 
 <section id="privacy-efficiency">
@@ -32,11 +31,9 @@ This deployment should use an API instance that its operator owns or is authoriz
     sectionId="privacy-efficiency"
 />
 
-Some media processing can happen directly in your browser. Requests that need server-side processing are sent to the API instance configured for this deployment.
+Where supported, processing can happen directly in your browser. When a task needs server processing, the request is sent to the ReliGo API instance configured for this deployment.
 
-Privacy and logging practices depend on that API operator. Review the operator's privacy policy before using a community instance, and avoid submitting private or sensitive URLs.
-
-You can configure a different processing instance in settings if you have a trusted API URL.
+Server-side processing may temporarily handle media links and encrypted tunnel information. Review the [privacy notes](/about/privacy) before using the service, and avoid submitting private or sensitive URLs.
 </section>
 
 <section id="community">
@@ -45,11 +42,13 @@ You can configure a different processing instance in settings if you have a trus
     sectionId="community"
 />
 
-ReliGo's source code and project updates are available on GitHub at https://github.com/frRitamDas/religo. Suggestions and contributions are welcome.
+Explore the project, report issues, and follow code updates in the [ReliGo GitHub repository](https://github.com/frRitamDas/religo).
 
-**Version:** 1.1
+**Website version:** 11.3
+
+**API version:** 11.3
 
 **Developer:** Ritam Das
 
-ReliGo is based on the open-source Cobalt project; upstream attribution and licensing information remain available at https://github.com/imputnet/cobalt.
+ReliGo uses open-source components. Applicable license and copyright notices are retained in the source repository.
 </section>
