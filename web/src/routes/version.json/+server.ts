@@ -6,7 +6,7 @@ export async function GET() {
         commit: await getCommit(),
         branch: await getBranch(),
         remote: await getRemote(),
-        version: await getVersion()
+        version: (await getVersion()).replace(/\.0$/, "")
     });
 }
 
