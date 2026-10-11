@@ -149,4 +149,11 @@
             display: block;
         }
     }
+
+    .subnav-tab { border:1px solid transparent; border-radius:12px; padding:9px 10px; transition:background .18s ease,border-color .18s ease; }
+    .subnav-tab.active { background:var(--button); color:var(--secondary); border-color:var(--button-stroke); box-shadow:0 4px 14px rgba(20,20,30,.04); }
+    .tab-icon { border-radius:8px; }
+    .subnav-tab-text { font-size:13px; font-weight:550; letter-spacing:-.015em; }
+    @media(max-width:750px) { .subnav-tab { border-radius:12px !important; box-shadow:none !important; border:1px solid var(--button-stroke); background:var(--button); margin-bottom:6px; } .subnav-tab.active { background:var(--secondary); color:var(--primary); } }
+
 </style>
