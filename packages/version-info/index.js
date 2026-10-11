@@ -3,6 +3,8 @@ import { join, parse } from 'node:path';
 import { cwd }         from 'node:process';
 import { readFile }    from 'node:fs/promises';
 
+const DEFAULT_REMOTE = 'frRitamDas/religo';
+
 const findFile = (file) => {
     let dir = cwd();
 
@@ -10,85 +12,68 @@ const findFile = (file) => {
         if (existsSync(join(dir, file))) {
             return dir;
         }
-
         dir = join(dir, '../');
     }
-}
+};
 
 const root = findFile('.git');
 const pack = findFile('package.json');
 
-const readGit = (filename) => {
-    if (!root) {
-        throw 'no git repository root found';
+const readGit = async (filename) => {
+    if (!root) return undefined;
+    try {
+        return await readFile(join(root, filename), 'utf8');
+    } catch {
+        return undefined;
     }
-
-    return readFile(join(root, filename), 'utf8');
-}
+};
 
 export const getCommit = async () => {
-    if (!root) {
-        return process.env.GIT_COMMIT || 'unknown';
-    }
-
-    return (await readGit('.git/logs/HEAD'))
-            ?.split('\n')
-            ?.filter(String)
-            ?.pop()
-            ?.split(' ')[1];
-}
+    const log = await readGit('.git/logs/HEAD');
+    return log?.split('\n').filter(Boolean).pop()?.split(' ')[1]
+        || process.env.GIT_COMMIT
+        || 'unknown';
+};
 
 export const getBranch = async () => {
-    if (process.env.CF_PAGES_BRANCH) {
-        return process.env.CF_PAGES_BRANCH;
-    }
+    if (process.env.CF_PAGES_BRANCH) return process.env.CF_PAGES_BRANCH;
+    if (process.env.WORKERS_CI_BRANCH) return process.env.WORKERS_CI_BRANCH;
 
-    if (process.env.WORKERS_CI_BRANCH) {
-        return process.env.WORKERS_CI_BRANCH;
-    }
-
-    if (!root) {
-        return process.env.GIT_BRANCH || 'unknown';
-    }
-
-    return (await readGit('.git/HEAD'))
-            ?.replace(/^ref: refs\/heads\//, '')
-            ?.trim();
-}
+    const head = await readGit('.git/HEAD');
+    return head?.replace(/^ref: refs\/heads\//, '').trim()
+        || process.env.GIT_BRANCH
+        || 'main';
+};
 
 export const getRemote = async () => {
-    if (!root) {
-        return process.env.GIT_REMOTE || 'frRitamDas/religo';
-    }
-
-    let remote = (await readGit('.git/config'))
-                    ?.split('\n')
-                    ?.find(line => line.includes('url = '))
-                    ?.split('url = ')[1];
+    const config = await readGit('.git/config');
+    let remote = config?.split('\n')
+        .find(line => line.trim().startsWith('url = '))
+        ?.split('url = ')[1]?.trim();
 
     if (remote?.startsWith('git@')) {
-        remote = remote.split(':')[1];
+        remote = remote.split(':').slice(1).join(':');
     } else if (remote?.startsWith('http')) {
-        remote = new URL(remote).pathname.substring(1);
+        try {
+            remote = new URL(remote).pathname.substring(1);
+        } catch {
+            remote = undefined;
+        }
     }
 
-    remote = remote?.replace(/\.git$/, '');
-
-    if (!remote) {
-        throw 'could not parse remote';
-    }
-
-    return remote;
-}
+    remote = remote?.replace(/\.git$/, '').replace(/\/$/, '');
+    return remote || process.env.GIT_REMOTE || DEFAULT_REMOTE;
+};
 
 export const getVersion = async () => {
-    if (!pack) {
-        throw 'no package root found';
+    if (!pack) return 'unknown';
+
+    try {
+        const { version } = JSON.parse(
+            await readFile(join(pack, 'package.json'), 'utf8')
+        );
+        return version || 'unknown';
+    } catch {
+        return 'unknown';
     }
-
-    const { version } = JSON.parse(
-        await readFile(join(pack, 'package.json'), 'utf8')
-    );
-
-    return version;
-}
+};
