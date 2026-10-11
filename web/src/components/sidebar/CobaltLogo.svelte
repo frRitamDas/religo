@@ -11,15 +11,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: calc(var(--sidebar-tab-padding) * 2);
-
-        /* Preserve the original room for the scaling animation. */
-        padding-bottom: calc(var(--sidebar-tab-padding) * 2 - var(--sidebar-inner-padding));
+        padding: 5px 8px 5px 10px;
+        border-right: 1px solid var(--glass-border);
     }
 
     #cobalt-logo :global(svg) {
-        width: 28px;
-        height: 28px;
+        width: 25px;
+        height: 25px;
         flex: 0 0 auto;
     }
 
