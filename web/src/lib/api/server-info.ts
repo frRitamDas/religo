@@ -50,7 +50,7 @@ export const getServerInfo = async () => {
 
     const freshInfo = await request();
 
-    if (!freshInfo || !("rel igo" in freshInfo)) {
+    if (!freshInfo || !("religo" in freshInfo)) {
         return false;
     }
 
@@ -61,7 +61,7 @@ export const getServerInfo = async () => {
         });
 
         // reload the page if turnstile sitekey changed
-        if (browser && get(turnstileEnabled) && cache && cache?.info?.rel igo?.turnstileSitekey !== freshInfo?.rel igo?.turnstileSitekey) {
+        if (browser && get(turnstileEnabled) && cache && cache?.info?.religo?.turnstileSitekey !== freshInfo?.religo?.turnstileSitekey) {
             window.location.reload();
         }
 
