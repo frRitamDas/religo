@@ -50,83 +50,89 @@
     #sidebar-tabs,
     .sidebar-inner-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
     }
 
     #sidebar {
-        background: var(--sidebar-bg);
-        height: 100vh;
-        width: calc(var(--sidebar-width) + var(--sidebar-inner-padding) * 2);
-        position: sticky;
+        position: fixed;
+        z-index: 20;
+        top: max(14px, env(safe-area-inset-top));
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: calc(100vw - 28px);
+        height: auto;
+        padding: 7px 9px;
+        gap: 10px;
+        border: 1px solid var(--glass-border);
+        border-radius: 999px;
+        background: var(--glass-surface);
+        color: var(--secondary);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(24px) saturate(160%);
+        -webkit-backdrop-filter: blur(24px) saturate(160%);
     }
 
     #sidebar-tabs {
-        height: 100%;
-        justify-content: space-between;
-        padding: var(--sidebar-inner-padding);
-        padding-bottom: var(--sidebar-tab-padding);
-        overflow-y: scroll;
+        height: auto;
+        min-width: 0;
+        justify-content: center;
+        gap: 4px;
+        padding: 0;
+        overflow-x: auto;
+        overflow-y: visible;
+        scrollbar-width: none;
+    }
+
+    #sidebar-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    #sidebar :global(.sidebar-inner-container) {
+        gap: 4px;
+        padding: 0;
     }
 
     @media screen and (max-width: 535px) {
-        #sidebar,
-        #sidebar-tabs,
-        .sidebar-inner-container {
-            flex-direction: row;
-        }
-
         #sidebar {
-            width: 100%;
-            height: var(--sidebar-height-mobile);
-            position: fixed;
-            bottom: 0;
-            justify-content: center;
-            align-items: flex-start;
-            z-index: 3;
-            padding: var(--sidebar-inner-padding) 0;
+            top: auto;
+            bottom: calc(10px + env(safe-area-inset-bottom));
+            width: max-content;
+            max-width: calc(100vw - 20px);
+            padding: 6px 8px;
+            gap: 0;
         }
 
-        #sidebar::before {
-            content: "";
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            pointer-events: none;
-            background: var(--sidebar-mobile-gradient);
-        }
+        #sidebar::before { content: none; }
 
         #sidebar-tabs {
-            overflow-y: visible;
-            overflow-x: scroll;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            justify-content: flex-start;
+        }
+
+        #sidebar :global(.sidebar-inner-container) {
+            flex: 0 0 auto;
+            gap: 2px;
             padding: 0;
-            height: fit-content;
         }
 
-        #sidebar :global(.sidebar-inner-container:first-child) {
-            padding-left: calc(var(--border-radius) * 1.5);
-        }
+        #sidebar :global(#cobalt-logo) { display: none; }
+    }
 
-        #sidebar :global(.sidebar-inner-container:last-child) {
-            padding-right: calc(var(--border-radius) * 1.5);
-        }
-
-        #sidebar :global(.sidebar-inner-container:first-child:dir(rtl)) {
-            padding-left: 0;
-            padding-right: calc(var(--border-radius) * 1.5);
-        }
-
-        #sidebar :global(.sidebar-inner-container:last-child:dir(rtl)) {
-            padding-right: 0;
-            padding-left: calc(var(--border-radius) * 1.5);
+    @media (prefers-reduced-transparency: reduce) {
+        #sidebar {
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            background: var(--sidebar-bg);
         }
     }
 
-    /* add padding for notch / dynamic island in landscape */
     @media screen and (orientation: landscape) {
         :global([data-iphone="true"]) #sidebar {
-            padding-left: env(safe-area-inset-left);
+            left: calc(50% + (env(safe-area-inset-left) - env(safe-area-inset-right)) / 2);
         }
     }
 </style>
