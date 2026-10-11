@@ -1,54 +1,21 @@
 <script lang="ts">
-    import locale from "$lib/i18n/locale";
-
     import { contacts } from "$lib/env";
     import { t } from "$lib/i18n/translations";
 
     import AboutSupport from "$components/about/AboutSupport.svelte";
 
-    let buttonContainerWidth: number;
 </script>
 
 <div id="support-page">
-    <div
-        id="support-buttons"
-        bind:offsetWidth={buttonContainerWidth}
-
-        class="two"
-        class:one={buttonContainerWidth < 500}
-    >
+    <div id="support-buttons" class="one">
         <AboutSupport
             platform="github"
             externalLink={contacts.github}
         />
-
-        {#if $locale === "ru"}
-            <AboutSupport
-                platform="telegram"
-                externalLink={contacts.telegram_ru}
-            />
-        {:else}
-            <AboutSupport
-                platform="discord"
-                externalLink={contacts.discord}
-            />
-            <AboutSupport
-                platform="twitter"
-                externalLink={contacts.twitter}
-            />
-            <AboutSupport
-                platform="bluesky"
-                externalLink={contacts.bluesky}
-            />
-        {/if}
     </div>
 
     <div class="subtext support-note">
         {$t("about.support.description.issue")}
-
-        {#if $locale !== "ru"}
-            {$t("about.support.description.help")}
-        {/if}
 
         {$t("about.support.description.best-effort")}
     </div>
