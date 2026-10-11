@@ -54,6 +54,27 @@
                 "https://github.com/frRitamDas/religo"
             );
         });
+
+        // Present historical release notes under the current ReliGo identity.
+        const changelogRoot = document.querySelector("#changelog-parent");
+        if (changelogRoot) {
+            const walker = document.createTreeWalker(changelogRoot, NodeFilter.SHOW_TEXT);
+            let node: Node | null;
+            while ((node = walker.nextNode())) {
+                if (node.nodeValue) {
+                    node.nodeValue = node.nodeValue
+                        .replace(/@justusecobalt/gi, "ReliGo")
+                        .replace(/cobalt/gi, "ReliGo");
+                }
+            }
+
+            changelogRoot.querySelectorAll<HTMLElement>("[alt]").forEach((element) => {
+                const alt = element.getAttribute("alt");
+                if (alt) {
+                    element.setAttribute("alt", alt.replace(/cobalt/gi, "ReliGo"));
+                }
+            });
+        }
     });
 </script>
 
