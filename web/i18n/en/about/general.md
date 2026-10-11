@@ -44,9 +44,9 @@ Server-side processing may temporarily handle media links and encrypted tunnel i
 
 Explore the project, report issues, and follow code updates in the [ReliGo GitHub repository](https://github.com/frRitamDas/religo).
 
-**Website version:** 11.3
+**Website version:** 11.4
 
-**API version:** 11.3
+**API version:** 11.4
 
 **Developer:** Ritam Das
 
