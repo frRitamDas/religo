@@ -30,7 +30,7 @@ const git = {
     remote: await getRemote(),
 }
 
-const version = await getVersion();
+const version = (await getVersion()).replace(/\.0$/, "");
 
 const acceptRegex = /^application\/json(; charset=utf-8)?$/;
 
