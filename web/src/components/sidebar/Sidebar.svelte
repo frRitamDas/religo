@@ -128,6 +128,30 @@
         #sidebar :global(#cobalt-logo) { display: none; }
     }
 
+
+    @media screen and (min-width: 536px) and (max-width: 680px) {
+        #sidebar {
+            max-width: calc(100vw - 12px);
+            padding: 6px;
+            gap: 3px;
+        }
+
+        #sidebar :global(#cobalt-logo) {
+            display: none;
+        }
+
+        #sidebar-tabs,
+        #sidebar :global(.sidebar-inner-container) {
+            gap: 1px;
+        }
+
+        #sidebar :global(.sidebar-tab) {
+            gap: 5px;
+            padding: 8px 9px;
+            font-size: 12px;
+        }
+    }
+
     :global([data-reduce-transparency="true"]) #sidebar {
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
