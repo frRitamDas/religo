@@ -27,6 +27,10 @@ const readGit = (filename) => {
 }
 
 export const getCommit = async () => {
+    if (!root) {
+        return process.env.GIT_COMMIT || 'unknown';
+    }
+
     return (await readGit('.git/logs/HEAD'))
             ?.split('\n')
             ?.filter(String)
@@ -43,12 +47,20 @@ export const getBranch = async () => {
         return process.env.WORKERS_CI_BRANCH;
     }
 
+    if (!root) {
+        return process.env.GIT_BRANCH || 'unknown';
+    }
+
     return (await readGit('.git/HEAD'))
-            ?.replace(/^ref: refs\/heads\//, '')
+            ?.replace(/^ref: refs\\/heads\\//, '')
             ?.trim();
 }
 
 export const getRemote = async () => {
+    if (!root) {
+        return process.env.GIT_REMOTE || 'frRitamDas/religo';
+    }
+
     let remote = (await readGit('.git/config'))
                     ?.split('\n')
                     ?.find(line => line.includes('url = '))
@@ -60,7 +72,7 @@ export const getRemote = async () => {
         remote = new URL(remote).pathname.substring(1);
     }
 
-    remote = remote?.replace(/\.git$/, '');
+    remote = remote?.replace(/\\.git$/, '');
 
     if (!remote) {
         throw 'could not parse remote';
