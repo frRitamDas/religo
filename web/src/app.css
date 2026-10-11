@@ -55,7 +55,10 @@
     --padding: 12px;
     --border-radius: 16px;
     --glass-surface: rgba(255, 255, 255, 0.78);
-    --glass-border: rgba(20, 20, 20, 0.10);
+    --glass-border: rgba(20, 20, 20, 0.12);
+    --glass-surface: rgba(250, 250, 248, 0.64);
+    --glass-active: #171717;
+    --glass-active-text: #ffffff;
 
     --sidebar-width: 80px;
     --sidebar-font-size: 11px;
@@ -135,7 +138,10 @@
 
     --sidebar-bg: #080808;
     --glass-surface: rgba(18, 18, 18, 0.76);
-    --glass-border: rgba(255, 255, 255, 0.13);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-surface: rgba(16, 16, 16, 0.62);
+    --glass-active: #f3f3f1;
+    --glass-active-text: #101010;
     --sidebar-highlight: var(--secondary);
     --sidebar-stroke: rgba(255, 255, 255, 0.04);
 
@@ -545,5 +551,55 @@ a { text-decoration-thickness: 1px; }
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* Soft depth without costly full-screen filters */
+#content {
+    background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(120, 120, 120, 0.075), transparent 52%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.012), transparent 30%);
+    background-attachment: scroll;
+}
+
+#sidebar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    pointer-events: none;
+    background: linear-gradient(145deg, rgba(255,255,255,0.13), transparent 38%, rgba(255,255,255,0.025));
+    z-index: -1;
+}
+
+[data-theme="dark"] #sidebar::after {
+    border-color: rgba(255, 255, 255, 0.09);
+    background: linear-gradient(145deg, rgba(255,255,255,0.08), transparent 38%, rgba(255,255,255,0.015));
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    #sidebar {
+        background: var(--sidebar-bg);
+        opacity: 0.98;
+    }
+}
+
+[data-reduce-transparency="true"] #sidebar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--sidebar-bg) !important;
+}
+
+@media (max-width: 535px) {
+    #content {
+        padding-top: calc(14px + env(safe-area-inset-top)) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #sidebar, .sidebar-tab {
+        transition: none !important;
     }
 }
