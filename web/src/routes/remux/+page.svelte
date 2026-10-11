@@ -133,4 +133,12 @@
             padding-top: var(--padding);
         }
     }
+
+    #remux-container { width:100%; max-width:980px; margin:0 auto; }
+    #remux-open { width:100%; max-width:980px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr); gap:clamp(16px,3vw,28px); align-items:stretch; }
+    #remux-receiver { min-width:0; border-radius:22px; border:1px solid var(--button-stroke); background:var(--button); box-shadow:0 16px 45px rgba(20,20,30,.045); padding:clamp(18px,3vw,30px); }
+    #remux-bullets { display:flex; flex-direction:column; gap:12px; justify-content:center; }
+    #remux-bullets :global(*) { min-width:0; }
+    @media(max-width:700px) { #remux-open { grid-template-columns:minmax(0,1fr); } }
+ 
 </style>
