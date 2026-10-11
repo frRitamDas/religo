@@ -1,7 +1,6 @@
 <script lang="ts">
     import settings from "$lib/state/settings";
 
-    import { donate } from "$lib/env";
     import { device } from "$lib/device";
     import { t } from "$lib/i18n/translations";
 
@@ -50,29 +49,15 @@
 
     type Processor = "stripe" | "liberapay";
     let processor: Processor = "stripe";
-
-    const donationMethods: Record<Processor, (_: number) => string> = {
-        stripe: (amount: number) => {
-            const url = new URL(donate.stripe);
-            url.searchParams.set("__prefilled_amount", amount.toString());
-            return url.toString();
-        },
-        liberapay: (amount: number) => {
-            const url = new URL(donate.liberapay);
-            url.searchParams.set("currency", "USD");
-            url.searchParams.set("period", "monthly");
-            url.searchParams.set("amount", (amount / 100).toString());
-            return url.toString();
-        },
-    };
+    let showUnavailable = false;
 
     const sendCustom = () => {
         if (!customInput.reportValidity()) {
             return;
         }
 
-        const amount = Math.floor(Number(customInputValue) * 100);
-        return window.open(donationMethods[processor](amount), "_blank");
+        // Payment links stay inactive until ReliGo has verified its own official channels.
+        showUnavailable = true;
     };
 
     const scrollBehavior = $settings.accessibility.reduceMotion
@@ -113,7 +98,7 @@
             <div class="donation-type-text">
                 <div class="donate-card-title">{$t("donate.card.once")}</div>
                 <div class="donate-card-subtitle">
-                    {$t("donate.card.processor", { value: "stripe" })}
+                    {$t("donate.card.payment_pending")}
                 </div>
             </div>
         </button>
@@ -130,7 +115,7 @@
             <div class="donation-type-text">
                 <div class="donate-card-title">{$t("donate.card.recurring")}</div>
                 <div class="donate-card-subtitle">
-                    {$t("donate.card.processor", { value: "liberapay" })}
+                    {$t("donate.card.payment_pending")}
                 </div>
             </div>
         </button>
@@ -177,7 +162,8 @@
                 <DonationOption
                     price={+amount}
                     desc={$t(`donate.card.option.${amount}`)}
-                    href={donationMethods[processor](+amount * 100)}
+                    href="#donations-not-configured"
+                    inactive={true}
                     {icon}
                 />
             {/each}
@@ -216,6 +202,12 @@
             <IconArrowRight />
         </button>
     </div>
+    <p id="donation-notice" role="status">
+        {$t("donate.card.payment_pending")}
+        {#if showUnavailable}
+            {$t("donate.card.payment_preview")}
+        {/if}
+    </p>
 </DonateCardContainer>
 
 <style>
@@ -431,6 +423,17 @@
         &.hidden {
             visibility: hidden;
         }
+    }
+
+    #donation-notice {
+        margin: 0 var(--donate-card-main-padding);
+        padding: 9px 11px;
+        border-radius: 10px;
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.055);
+        font-size: 12px;
+        line-height: 1.5;
+        opacity: 0.78;
     }
 
     @media screen and (max-width: 550px) {

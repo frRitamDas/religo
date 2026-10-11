@@ -3,15 +3,15 @@
 
     import { t } from "$lib/i18n/translations";
 
-    import Imput from "$components/icons/Imput.svelte";
+    import ReliGoMark from "$components/icons/Cobalt.svelte";
     import Meowbalt from "$components/misc/Meowbalt.svelte";
 </script>
 
 <header id="banner">
     <div id="banner-contents">
         <div id="banner-left">
-            <div id="imput-logo">
-                <Imput />
+            <div id="religo-logo" aria-label="ReliGo">
+                <ReliGoMark />
             </div>
             <div
                 id="banner-title"
@@ -103,11 +103,11 @@
         position: relative;
     }
 
-    #imput-logo {
+    #religo-logo {
         display: flex;
     }
 
-    #imput-logo :global(svg) {
+    #religo-logo :global(svg) {
         width: 48px;
         height: 42px;
     }

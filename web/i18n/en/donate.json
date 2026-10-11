@@ -1,9 +1,9 @@
 {
     "banner.title": "Support ReliGo's development",
-    "banner.subtitle": "share feedback, report issues, and follow project updates",
-    "body.motivation": "ReliGo is developed and maintained by Ritam Das.",
-    "body.no_bullshit": "The project aims to keep its download flow clear, accessible, and straightforward. Service availability can change when external platforms change their systems.",
-    "body.keep_going": "You can support ReliGo by testing the experience, reporting bugs with clear steps, contributing to the source code, or sharing the project with someone who may find it useful.",
+    "banner.subtitle": "share ReliGo, report issues, and help improve the experience",
+    "body.motivation": "ReliGo is developed and maintained by Ritam Das, with the goal of keeping media saving clear, accessible, and straightforward.",
+    "body.no_bullshit": "The familiar interface and animations are part of the experience. Supported services can change as external platforms update their systems.",
+    "body.keep_going": "You can support ReliGo by testing it, reporting reproducible bugs, contributing to the source code, or sharing the project with someone who may find it useful.",
     "card.once": "one-time donation",
     "card.recurring": "recurring donation",
     "card.custom": "custom amount (from $2)",
@@ -25,5 +25,7 @@
     "share.title": "share ReliGo with a friend",
     "alternative.title": "Project links",
     "alt.copy": "{{ value }}. crypto wallet address. press to copy.",
-    "alt.open": "{{ value }}. press to open."
+    "alt.open": "{{ value }}. press to open.",
+    "card.payment_pending": "Official ReliGo donation channels are not configured yet.",
+    "card.payment_preview": "Amounts are preview-only; no payment page will be opened."
 }

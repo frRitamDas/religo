@@ -2,6 +2,7 @@
     export let price: number;
     export let desc: string;
     export let href: string;
+    export let inactive: boolean = false;
     export let icon: ConstructorOfATypedSvelteComponent;
 
     const USD = new Intl.NumberFormat("en-US", {
@@ -13,7 +14,10 @@
 
 <button
     class="donation-option"
+    class:inactive
+    aria-disabled={inactive}
     on:click={() => {
+        if (inactive) return;
         window.open(href, "_blank");
     }}
 >
@@ -25,6 +29,10 @@
 </button>
 
 <style>
+    .donation-option.inactive {
+        cursor: not-allowed;
+    }
+
     .donation-option .donate-card-subtitle {
         white-space: nowrap;
     }

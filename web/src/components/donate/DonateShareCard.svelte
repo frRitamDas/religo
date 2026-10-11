@@ -17,7 +17,7 @@
     import CobaltQr from "$components/icons/CobaltQR.svelte";
     import CopyIcon from "$components/misc/CopyIcon.svelte";
 
-    const cobaltUrl = "https://cobalt.tools/";
+    const religoUrl = "https://github.com/frRitamDas/religo";
 
     let copied = false;
 
@@ -53,7 +53,7 @@
                 class="action-button"
                 on:click={async () => {
                     if (!copied) {
-                        copyURL(cobaltUrl);
+                        copyURL(religoUrl);
                         hapticConfirm();
                         copied = true;
                     }
@@ -70,7 +70,7 @@
                 <button
                     id="action-button-share"
                     class="action-button"
-                    on:click={async () => shareURL(cobaltUrl)}
+                    on:click={async () => shareURL(religoUrl)}
                 >
                     <div class="action-button-icon">
                         <IconShare2 />
@@ -108,7 +108,7 @@
         class="donate-card-subtitle share-footer-link"
         class:centered={expanded}
     >
-        cobalt.tools
+        github.com/frRitamDas/religo
     </div>
 </DonateCardContainer>
 

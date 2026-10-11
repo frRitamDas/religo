@@ -1,5 +1,11 @@
 <script lang="ts">
+    import "@fontsource/redaction-10/400.css";
     import { t } from "$lib/i18n/translations";
+    import DonateBanner from "$components/donate/DonateBanner.svelte";
+    import DonateShareCard from "$components/donate/DonateShareCard.svelte";
+    import DonateOptionsCard from "$components/donate/DonateOptionsCard.svelte";
+    import DonateAltItem from "$components/donate/DonateAltItem.svelte";
+    import IconDiamond from "@tabler/icons-svelte/IconDiamond.svelte";
 </script>
 
 <svelte:head>
@@ -8,156 +14,112 @@
     <meta name="description" content="Support ReliGo by sharing feedback, reporting issues, and following project updates." />
 </svelte:head>
 
-<div id="reli-support-page">
-    <header class="support-hero">
-        <div class="eyebrow">RELIGO · VERSION 11.3</div>
-        <h1>Support ReliGo's development</h1>
-        <p>ReliGo is maintained by Ritam Das. The most useful support right now is helping test the experience, reporting problems clearly, and following development.</p>
-        <div class="version-line">WEBSITE 11.3 <span>·</span> API 11.3 <span>·</span> RITAM DAS</div>
-    </header>
+<div id="donate-page-wrapper">
+    <main id="donate-page">
+        <DonateBanner />
 
-    <section class="support-grid" aria-label="Ways to support ReliGo">
-        <article class="support-card">
-            <div class="number">01</div>
-            <h2>Explore the source</h2>
-            <p>Review the code, follow changes, and share ReliGo with people who may find it useful.</p>
-            <a class="button" href="https://github.com/frRitamDas/religo" target="_blank" rel="noreferrer">
-                Open GitHub repository <span aria-hidden="true">↗</span>
-            </a>
-        </article>
+        <section id="support-options">
+            <DonateOptionsCard />
+            <DonateShareCard />
+        </section>
 
-        <article class="support-card">
-            <div class="number">02</div>
-            <h2>Report a problem</h2>
-            <p>When a supported link fails, include the service, a clear error description, and steps to reproduce it. Never include private URLs or access tokens.</p>
-            <a class="button" href="https://github.com/frRitamDas/religo/issues" target="_blank" rel="noreferrer">
-                Report an issue <span aria-hidden="true">↗</span>
-            </a>
-        </article>
-    </section>
+        <section id="motivation" class="long-text">
+            <p>{$t("donate.body.motivation")}</p>
+            <p>{$t("donate.body.no_bullshit")}</p>
+            <p>{$t("donate.body.keep_going")}</p>
+        </section>
 
-    <aside class="donation-note">
-        <strong>Official donations are not enabled yet.</strong>
-        <p>ReliGo does not currently publish its own verified payment channels. Donation links to unrelated projects are intentionally not shown.</p>
-    </aside>
+        <section id="crypto">
+            <div id="crypto-section-header">
+                <IconDiamond />
+                <h3 id="crypto-title">{$t("donate.alternative.title")}</h3>
+            </div>
+            <div id="wallet-grid">
+                <DonateAltItem type="open" name="GitHub repository" address="https://github.com/frRitamDas/religo" title="Source code, releases, and project updates" />
+                <DonateAltItem type="open" name="Report an issue" address="https://github.com/frRitamDas/religo/issues" title="Feedback and reproducible bug reports" />
+            </div>
+        </section>
+    </main>
 </div>
 
 <style>
-    #reli-support-page {
+    #donate-page-wrapper {
+        display: flex;
         width: 100%;
-        max-width: 920px;
-        margin: 0 auto;
+        height: max-content;
+        justify-content: center;
+        overflow-y: scroll;
+        overflow-x: hidden;
         padding: var(--padding);
+    }
+
+    #donate-page {
+        --donate-border-radius: 24px;
+        --donate-border-opacity: 0.1;
+        --donate-gradient-start: #1a1a1a;
+        --donate-gradient-end: #404040;
+        max-width: 100%;
+        width: 900px;
         display: flex;
         flex-direction: column;
-        gap: 18px;
-        overflow-wrap: anywhere;
+        gap: 15px;
     }
 
-    .support-hero {
-        position: relative;
-        overflow: hidden;
-        padding: clamp(24px, 5vw, 42px);
-        border: 1px solid color-mix(in srgb, var(--secondary) 18%, transparent);
-        border-radius: 24px;
-        background:
-            radial-gradient(ellipse at 88% 8%, color-mix(in srgb, #8c83ff 25%, transparent), transparent 45%),
-            linear-gradient(135deg, color-mix(in srgb, var(--secondary) 12%, var(--background)), var(--background));
+    :global([data-theme="dark"]) #donate-page {
+        --donate-border-opacity: 0.05;
+        --donate-gradient-start: #111111;
+        --donate-gradient-end: #2a2a2a;
     }
 
-    .eyebrow {
-        color: var(--gray);
-        font-size: 12px;
-        font-weight: 750;
-        letter-spacing: .16em;
+    #support-options {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        width: 100%;
     }
 
-    .support-hero h1 {
-        max-width: 16ch;
-        margin: 16px 0 12px;
-        font-size: clamp(1.8rem, 5.5vw, 3rem);
-        line-height: 1.08;
-        letter-spacing: -.035em;
+    #motivation,
+    #crypto {
+        padding: 0 12px;
     }
 
-    .support-hero p {
-        max-width: 58ch;
-        line-height: 1.7;
+    #crypto {
+        margin-bottom: 12px;
     }
 
-    .version-line {
-        margin-top: 24px;
-        color: var(--gray);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: .12em;
+    #crypto-section-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
     }
 
-    .version-line span {
-        padding: 0 6px;
-        opacity: .55;
+    #crypto-section-header :global(svg) {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.8px;
     }
 
-    .support-grid {
+    #wallet-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-    }
-
-    .support-card {
-        min-width: 0;
-        padding: 22px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
-        border-radius: 20px;
-        border: 1px solid color-mix(in srgb, var(--secondary) 15%, transparent);
-        background: color-mix(in srgb, var(--secondary) 5%, var(--background));
     }
 
-    .number {
-        color: var(--gray);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: .12em;
+    #motivation p:first-child {
+        margin-block-start: 10px;
     }
 
-    .support-card h2 {
-        margin: 2px 0;
-        font-size: clamp(1.15rem, 3vw, 1.35rem);
-    }
-
-    .support-card p {
-        flex: 1;
-        line-height: 1.65;
-    }
-
-    .support-card a {
-        margin-top: 8px;
-        text-decoration: none;
-    }
-
-    .donation-note {
-        padding: 18px 20px;
-        border-left: 3px solid var(--secondary);
-        background: color-mix(in srgb, var(--secondary) 5%, var(--background));
-        border-radius: 0 12px 12px 0;
-    }
-
-    .donation-note p {
-        margin: 6px 0 0;
-        color: var(--gray);
-        line-height: 1.6;
-    }
-
-    @media (max-width: 640px) {
-        .support-grid {
+    @media screen and (max-width: 760px) {
+        #support-options {
+            flex-direction: column;
+        }
+        #wallet-grid {
             grid-template-columns: 1fr;
         }
-
-        .support-card {
-            padding: 18px;
+        #motivation,
+        #crypto {
+            padding: 0 6px;
         }
     }
 </style>

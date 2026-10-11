@@ -1,10 +1,7 @@
 <script lang="ts">
     import { t } from "$lib/i18n/translations";
     import SectionHeading from "$components/misc/SectionHeading.svelte";
-    import ReliGoReleasePanel from "$components/about/ReliGoReleasePanel.svelte";
 </script>
-
-<ReliGoReleasePanel locale="ru" />
 
 <section id="summary">
 <SectionHeading
