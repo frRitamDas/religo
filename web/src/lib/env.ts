@@ -24,11 +24,11 @@ const variables = {
 }
 
 const contacts = {
-    discord: "https://discord.gg/pQPt8HBUPu",
-    twitter: "https://x.com/justusecobalt",
+    discord: "https://github.com/frRitamDas/religo",
+    twitter: "https://github.com/frRitamDas/religo",
     github: "https://github.com/frRitamDas/religo",
-    bluesky: "https://bsky.app/profile/cobalt.tools",
-    telegram_ru: "https://t.me/justusecobalt_ru",
+    bluesky: "https://github.com/frRitamDas/religo",
+    telegram_ru: "https://github.com/frRitamDas/religo",
 }
 
 const partners = {
