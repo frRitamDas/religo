@@ -603,3 +603,27 @@ a { text-decoration-thickness: 1px; }
         transition: none !important;
     }
 }
+
+
+/* ReliGo 11.4: user-controlled layout density */
+#cobalt[data-ui-density="compact"] {
+    --padding: 8px;
+    --border-radius: 12px;
+    --sidebar-tab-padding: 7px;
+}
+#cobalt[data-ui-density="comfortable"] {
+    --padding: 12px;
+    --border-radius: 16px;
+    --sidebar-tab-padding: 10px;
+}
+#cobalt[data-ui-density="spacious"] {
+    --padding: 18px;
+    --border-radius: 20px;
+    --sidebar-tab-padding: 13px;
+}
+#cobalt[data-ui-density="spacious"] .sidebar-tab {
+    font-size: 14px;
+}
+#cobalt[data-ui-density="compact"] .sidebar-tab {
+    font-size: 12px;
+}
