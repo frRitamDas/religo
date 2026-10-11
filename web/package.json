@@ -1,5 +1,5 @@
 {
-    "name": "@imput/cobalt-web",
+    "name": "@religo/web",
     "version": "1.1.0",
     "type": "module",
     "private": true,
