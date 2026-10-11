@@ -13,6 +13,7 @@ const defaultSettings: CobaltSettings = {
         language: defaultLocale,
         autoLanguage: true,
         hideRemuxTab: false,
+        uiDensity: "comfortable",
     },
     accessibility: {
         reduceMotion: false,
