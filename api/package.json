@@ -3,13 +3,13 @@
     "description": "ReliGo media processing API",
     "version": "1.1.0",
     "author": "Ritam Das",
-    "exports": "./src/cobalt.js",
+    "exports": "./src/religo.js",
     "type": "module",
     "engines": {
         "node": ">=18.17"
     },
     "scripts": {
-        "start": "node src/cobalt",
+        "start": "node src/religo",
         "test": "node src/util/test",
         "token:jwt": "node src/util/generate-jwt-secret"
     },
