@@ -2,7 +2,7 @@
 
 The ReliGo frontend is a static web app built with [SvelteKit](https://kit.svelte.dev/) and [Vite](https://vitejs.dev/).
 
-**Version:** 1.1  
+**Version:** 11.3  
 **Developer:** Ritam Das
 
 ## Configuring
