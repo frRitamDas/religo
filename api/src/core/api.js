@@ -320,7 +320,7 @@ export const runAPI = async (express, app, __dirname, isPrimary = true) => {
         return stream(res, streamInfo);
     });
 
-    app.get('/status', (_, res) => {
+    app.get('/status', cors(), (_, res) => {
         res.set('Cache-Control', 'no-store');
         res.type('json');
         res.status(200).json({
