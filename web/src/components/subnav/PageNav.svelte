@@ -270,4 +270,20 @@
             font-size: 16.5px;
         }
     }
+
+    .subnav-page { --subnav-nav-width: 238px; --subnav-padding: 22px; column-gap: 18px; }
+    .subnav-sidebar { gap: 16px; }
+    .subnav-header { padding: 0 4px; }
+    .subnav-page-title { letter-spacing: -.05em; font-weight: 700; }
+    .subnav-navigation { gap: 8px; }
+    .subnav-page-content { max-width: 760px; gap: 14px; padding: 8px; }
+    .subnav-page-content.wide { max-width: 980px; }
+    @media(max-width:750px) {
+      .subnav-page { gap:0; }
+      .subnav-header { padding: 14px 8px 16px; }
+      .subnav-page-content { padding: 0 2px 12px; gap: 12px; }
+      .subnav-page-content.padding { padding: 12px 2px; }
+      .subnav-navigation { padding: 8px 0 18px; }
+    }
+
 </style>
