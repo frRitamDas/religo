@@ -3,6 +3,7 @@
     import type { Optional } from "$lib/types/generic";
 
     import Skeleton from "$components/misc/Skeleton.svelte";
+    import { officialApiURL } from "$lib/env";
 
     type Props = {
         version: string;
@@ -48,13 +49,25 @@
         // Route historical links to ReliGo, never to the original product's community.
         const upstreamRepo = "https://github.com/imputnet/cobalt";
         const religoRepo = "https://github.com/frRitamDas/religo";
+        const legacySiteLinks = [
+            { base: "https://api.cobalt.tools", replacement: officialApiURL },
+            { base: "http://api.cobalt.tools", replacement: officialApiURL },
+            { base: "https://cobalt.tools", replacement: window.location.origin },
+            { base: "http://cobalt.tools", replacement: window.location.origin },
+            { base: "https://co.wukko.me", replacement: window.location.origin },
+        ];
         const retiredCommunityLinks = [
             "https://twitter.com/justusecobalt",
             "https://x.com/justusecobalt",
             "https://discord.gg/pQPt8HBUPu"
         ];
         document.querySelectorAll<HTMLAnchorElement>("#changelog-parent .changelog-body a").forEach((link) => {
-            if (link.href.startsWith(upstreamRepo)) {
+            const legacySite = legacySiteLinks.find(({ base }) => link.href.startsWith(base));
+            if (legacySite) {
+                const suffix = link.href.slice(legacySite.base.length);
+                link.href = legacySite.replacement + suffix;
+                link.rel = "noopener noreferrer";
+            } else if (link.href.startsWith(upstreamRepo)) {
                 const suffix = link.href.slice(upstreamRepo.length);
                 const obsoleteResource = [
                     "/issues/", "/pull/", "/pulls/", "/commit/", "/commits/",
