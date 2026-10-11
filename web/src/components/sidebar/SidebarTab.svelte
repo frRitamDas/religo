@@ -167,4 +167,10 @@
             }
         }
     }
+
+    .sidebar-tab { font-size: 12px; font-weight: 600; border-radius: 12px; padding: 10px 13px; gap: 8px; letter-spacing: -.015em; opacity: .8; transition: color .18s ease, background .18s ease, transform .18s ease; }
+    .sidebar-tab.active { box-shadow: none; animation: none; }
+    .sidebar-tab :global(svg) { width: 17px; height: 17px; }
+    @media (max-width: 535px) { .sidebar-tab { min-width: 43px; padding: 7px 8px; gap: 3px; font-size: 9.5px; } }
+ 
 </style>
