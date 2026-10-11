@@ -35,6 +35,14 @@
     </Switcher>
 </SettingsCategory>
 
+<SettingsCategory sectionId="density" title="Interface density">
+    <Switcher big={true} description="Adjust spacing and navigation text size to suit your screen and reading preference.">
+        <SettingsButton settingContext="appearance" settingId="uiDensity" settingValue="compact">Compact</SettingsButton>
+        <SettingsButton settingContext="appearance" settingId="uiDensity" settingValue="comfortable">Comfortable</SettingsButton>
+        <SettingsButton settingContext="appearance" settingId="uiDensity" settingValue="spacious">Spacious</SettingsButton>
+    </Switcher>
+</SettingsCategory>
+
 <SettingsCategory sectionId="language" title={$t("settings.language")}>
     <SettingsToggle
         settingContext="appearance"
