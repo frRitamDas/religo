@@ -155,11 +155,17 @@
 
     @keyframes heart-move {
         from {
-            transform: translateX(0) translateY(0);
+            transform: translate(0, 0);
         }
 
         to {
-            transform: translateX(83px) translateY(107px);
+            transform: translate(83px, 107px);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #banner-background-animation {
+            animation: none;
         }
     }
 
