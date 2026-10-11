@@ -47,5 +47,9 @@ You can configure a different processing instance in settings if you have a trus
 
 ReliGo's source code and project updates are available on GitHub at https://github.com/frRitamDas/religo. Suggestions and contributions are welcome.
 
-ReliGo is based on Cobalt; see the upstream project for original documentation and licensing information.
+**Version:** 1.1
+
+**Developer:** Ritam Das
+
+ReliGo is based on the open-source Cobalt project; upstream attribution and licensing information remain available at https://github.com/imputnet/cobalt.
 </section>
