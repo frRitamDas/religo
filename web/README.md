@@ -1,5 +1,5 @@
-# cobalt web
-the cobalt frontend is a static web app built with
+# ReliGo web
+the ReliGo frontend is a static web app built with
 [sveltekit](https://kit.svelte.dev/) + [vite](https://vitejs.dev/).
 
 ## configuring
@@ -10,13 +10,13 @@ the cobalt frontend is a static web app built with
 the frontend has several build-time environment variables for configuring various features. to use
 them, you must specify them when building the frontend (or running a vite server for development).
 
-`WEB_DEFAULT_API` is **required** to run cobalt frontend.
+`WEB_DEFAULT_API` is **required** to run the ReliGo frontend.
 
 | name                            | example                     | description                                                                                             |
 |:--------------------------------|:----------------------------|:--------------------------------------------------------------------------------------------------------|
-| `WEB_HOST`                      | `cobalt.tools`              | domain on which the frontend will be running. used for meta tags and configuring plausible.             |
+| `WEB_HOST`                      | `your-religo-domain.example`              | domain on which the frontend will be running. used for meta tags and configuring plausible.             |
 | `WEB_PLAUSIBLE_HOST`            | `plausible.io`*             | enables plausible analytics with provided hostname as receiver backend.                                 |
-| `WEB_DEFAULT_API`               | `https://api.cobalt.tools/` | changes url which is used for api requests by frontend clients.                                         |
+| `WEB_DEFAULT_API`               | `https://your-authorized-api.example/` | changes url which is used for api requests by frontend clients.                                         |
 | `ENABLE_DEPRECATED_YOUTUBE_HLS` | `true`                      | enables the youtube HLS settings entry; allows sending the related variable to the processing instance. |
 
 \* don't use plausible.io as receiver backend unless you paid for their cloud service.
@@ -25,12 +25,12 @@ them, you must specify them when building the frontend (or running a vite server
 ## link prefill
 to prefill the link into the input box & start the download automatically, you can pass the URL in the `#` parameter, like this:
 ```
-https://cobalt.tools/#https://www.youtube.com/watch?v=dQw4w9WgXcQ
+https://your-religo-domain.example/#https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ```
 
 the link can also be URI-encoded, like this:
 ```
-https://cobalt.tools/#https%3A//www.youtube.com/watch%3Fv=dQw4w9WgXcQ
+https://your-religo-domain.example/#https%3A//www.youtube.com/watch%3Fv=dQw4w9WgXcQ
 ```
 
 ## license
@@ -74,7 +74,7 @@ the cobalt frontend uses several different fonts and icon sets.
 - [mdsvex](https://github.com/pngwn/MDsveX) to convert the changelogs into svelte components.
 - [compare-versions](https://github.com/omichelsen/compare-versions) for sorting the changelogs.
 - [svelte-sitemap](https://github.com/bartholomej/svelte-sitemap) for generating a sitemap for the frontend.
-- [sveltekit-i18n](https://github.com/sveltekit-i18n/lib) for displaying cobalt in many different languages.
+- [sveltekit-i18n](https://github.com/sveltekit-i18n/lib) for displaying the ReliGo interface in many different languages.
 - [vite](https://github.com/vitejs/vite) for building the frontend.
 
 ...and many other packages that these packages rely on.
