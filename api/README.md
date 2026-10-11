@@ -2,7 +2,7 @@
 
 The ReliGo API is the Express-based media-processing service used by the ReliGo frontend.
 
-**Version:** 1.1  
+**Version:** 11.3  
 **Developer:** Ritam Das
 
 ## Running an instance
