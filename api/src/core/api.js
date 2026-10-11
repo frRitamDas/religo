@@ -320,6 +320,26 @@ export const runAPI = async (express, app, __dirname, isPrimary = true) => {
         return stream(res, streamInfo);
     });
 
+    app.get('/status', (_, res) => {
+        res.set('Cache-Control', 'no-store');
+        res.type('json');
+        res.status(200).json({
+            service: "ReliGo API",
+            status: "operational",
+            version,
+            apiVersion: version,
+            uptimeSeconds: Math.floor(process.uptime()),
+            startedAt: new Date(startTimestamp).toISOString(),
+            checkedAt: new Date().toISOString(),
+            services: [...env.enabledServices].map(friendlyServiceName),
+            runtime: {
+                node: process.version,
+                environment: env.envFile ? "dynamic" : "static",
+            },
+            note: "This endpoint reports the API process and configured services. It does not independently probe every upstream provider."
+        });
+    });
+
     app.get('/', (_, res) => {
         res.type('json');
         res.status(200).send(env.envFile ? getServerInfo() : serverInfo);
