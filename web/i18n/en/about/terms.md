@@ -51,7 +51,7 @@ fair use and credits benefit everyone.
 />
 
 we have no way of detecting abusive behavior automatically because ReliGo is fully anonymous.
-however, you can report such activities to us via email and we'll do our best to comply manually: abuse[at]imput.net
+ReliGo does not currently publish a dedicated abuse-report email. For non-sensitive reports, use the [ReliGo GitHub issue tracker](https://github.com/frRitamDas/religo/issues). Do not post private URLs, tokens, or personal information in a public issue.
 
 **this email is not intended for user support, you will not get a response if your concern is not related to abuse.**
 
