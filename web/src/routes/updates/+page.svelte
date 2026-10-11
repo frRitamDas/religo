@@ -222,4 +222,8 @@
             padding-top: var(--padding);
         }
     }
+
+    :global(.changelog-page), :global(#changelog-page), :global(.updates-page) { max-width:980px; margin-inline:auto; }
+    :global(.changelog-entry), :global(.changelog-card), :global(.version-card) { border:1px solid var(--button-stroke); border-radius:18px; background:var(--button); box-shadow:0 8px 30px rgba(20,20,30,.035); }
+ 
 </style>
