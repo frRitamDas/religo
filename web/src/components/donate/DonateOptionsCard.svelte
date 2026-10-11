@@ -67,20 +67,20 @@
     $: showLeftScroll = false;
     $: showRightScroll = true;
 
-    const scroll = (direction: "left" | "right") => {
-        const currentPos = donateList.scrollLeft;
-        const maxPos = donateList.scrollWidth - donateList.getBoundingClientRect().width;
-        const newPos = direction === "left" ? currentPos - 250 : currentPos + 250;
+    const updateScrollControls = () => {
+        if (!donateList) return;
+        const maxPos = donateList.scrollWidth - donateList.clientWidth;
+        showLeftScroll = donateList.scrollLeft > 2;
+        showRightScroll = maxPos - donateList.scrollLeft > 2;
+    };
 
-        donateList.scroll({
-            left: newPos,
+    const scroll = (direction: "left" | "right") => {
+        if (!donateList) return;
+        const distance = Math.max(200, Math.round(donateList.clientWidth * 0.7));
+        donateList.scrollTo({
+            left: donateList.scrollLeft + (direction === "left" ? -distance : distance),
             behavior: scrollBehavior,
         });
-
-        setTimeout(() => {
-            showLeftScroll = newPos > 0;
-            showRightScroll = newPos < maxPos && newPos !== maxPos;
-        }, 150)
     };
 </script>
 
@@ -151,12 +151,7 @@
             class:mask-both={!device.is.mobile && showLeftScroll && showRightScroll}
             class:mask-left={!device.is.mobile && showLeftScroll && !showRightScroll}
             class:mask-right={!device.is.mobile && showRightScroll && !showLeftScroll}
-            on:wheel={() => {
-                const currentPos = donateList.scrollLeft;
-                const maxPos = donateList.scrollWidth - donateList.getBoundingClientRect().width - 5;
-                showLeftScroll = currentPos > 0;
-                showRightScroll = currentPos < maxPos && currentPos !== maxPos;
-            }}
+            on:scroll={updateScrollControls}
         >
             {#each Object.entries(PRESET_DONATION_AMOUNTS) as [amount, icon]}
                 <DonationOption
@@ -226,10 +221,13 @@
         display: flex;
         flex-direction: row;
         gap: calc(var(--donate-card-main-padding) / 2);
-        overflow: scroll;
+        overflow-x: auto;
+        scrollbar-width: none;
     }
 
     .donation-type {
+        flex: 1 0 0;
+        min-width: 0;
         width: 100%;
         overflow: hidden;
         gap: 2px;
@@ -250,9 +248,18 @@
         flex-direction: column;
     }
 
+    #donation-options::-webkit-scrollbar,
+    #donation-types::-webkit-scrollbar,
+    #donation-custom::-webkit-scrollbar {
+        display: none;
+    }
+
     #donation-options {
         display: flex;
-        overflow-x: scroll;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        scroll-snap-type: x proximity;
         gap: 6px;
         mask-image: linear-gradient(
             90deg,
@@ -267,7 +274,17 @@
     #donation-custom {
         display: flex;
         gap: 6px;
-        overflow: scroll;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    #donation-options:focus-visible,
+    #donation-custom-input:focus-visible,
+    #donation-custom-submit:focus-visible,
+    .donation-type:focus-visible,
+    .scroll-button:focus-visible {
+        outline: 2px solid var(--white);
+        outline-offset: 2px;
     }
 
     #input-container {
