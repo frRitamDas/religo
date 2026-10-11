@@ -57,15 +57,14 @@
     #sidebar {
         position: fixed;
         z-index: 20;
-        position: fixed;
         top: max(14px, env(safe-area-inset-top));
         left: 50%;
         margin: 0;
-        transform: translate3d(-50%, 0, 0);
+        translate: -50% 0;
         isolation: isolate;
-        contain: layout style;
         width: max-content;
         max-width: calc(100vw - 28px);
+        box-sizing: border-box;
         height: auto;
         padding: 7px 9px;
         gap: 10px;
@@ -104,6 +103,8 @@
             top: auto;
             position: fixed;
             top: auto;
+            left: 50%;
+            translate: -50% 0;
             bottom: calc(10px + env(safe-area-inset-bottom));
             width: max-content;
             max-width: calc(100vw - 20px);
@@ -147,7 +148,7 @@
 
     @media screen and (orientation: landscape) {
         :global([data-iphone="true"]) #sidebar {
-            left: calc(50% + (env(safe-area-inset-left) - env(safe-area-inset-right)) / 2);
+            left: 50%;
         }
     }
 </style>
