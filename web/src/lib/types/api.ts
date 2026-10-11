@@ -1,6 +1,6 @@
 import type { CobaltSettings } from "$lib/types/settings";
 
-enum CobaltResponseType {
+enum ReliGoResponseType {
     Error = 'error',
     Picker = 'picker',
     Redirect = 'redirect',
@@ -8,8 +8,8 @@ enum CobaltResponseType {
     LocalProcessing = 'local-processing',
 }
 
-export type CobaltErrorResponse = {
-    status: CobaltResponseType.Error,
+export type ReliGoErrorResponse = {
+    status: ReliGoResponseType.Error,
     error: {
         code: string,
         context?: {
@@ -19,13 +19,13 @@ export type CobaltErrorResponse = {
     },
 };
 
-type CobaltPartialURLResponse = {
+type ReliGoPartialURLResponse = {
     url: string,
     filename: string,
 }
 
-type CobaltPickerResponse = {
-    status: CobaltResponseType.Picker
+type ReliGoPickerResponse = {
+    status: ReliGoResponseType.Picker
     picker: {
         type: 'photo' | 'video' | 'gif',
         url: string,
@@ -35,15 +35,15 @@ type CobaltPickerResponse = {
     audioFilename?: string,
 };
 
-type CobaltRedirectResponse = {
-    status: CobaltResponseType.Redirect,
-} & CobaltPartialURLResponse;
+type ReliGoRedirectResponse = {
+    status: ReliGoResponseType.Redirect,
+} & ReliGoPartialURLResponse;
 
-type CobaltTunnelResponse = {
-    status: CobaltResponseType.Tunnel,
-} & CobaltPartialURLResponse;
+type ReliGoTunnelResponse = {
+    status: ReliGoResponseType.Tunnel,
+} & ReliGoPartialURLResponse;
 
-export const CobaltFileMetadataKeys = [
+export const ReliGoFileMetadataKeys = [
     'album',
     'composer',
     'genre',
@@ -56,23 +56,23 @@ export const CobaltFileMetadataKeys = [
     'sublanguage',
 ];
 
-export type CobaltFileMetadata = Record<
-    typeof CobaltFileMetadataKeys[number], string | undefined
+export type ReliGoFileMetadata = Record<
+    typeof ReliGoFileMetadataKeys[number], string | undefined
 >;
 
-export type CobaltLocalProcessingType = 'merge' | 'mute' | 'audio' | 'gif' | 'remux' | 'proxy';
+export type ReliGoLocalProcessingType = 'merge' | 'mute' | 'audio' | 'gif' | 'remux' | 'proxy';
 
-export type CobaltLocalProcessingResponse = {
-    status: CobaltResponseType.LocalProcessing,
+export type ReliGoLocalProcessingResponse = {
+    status: ReliGoResponseType.LocalProcessing,
 
-    type: CobaltLocalProcessingType,
+    type: ReliGoLocalProcessingType,
     service: string,
     tunnel: string[],
 
     output: {
         type: string, // mimetype
         filename: string,
-        metadata?: CobaltFileMetadata,
+        metadata?: ReliGoFileMetadata,
         subtitles?: boolean,
     },
 
@@ -87,9 +87,9 @@ export type CobaltLocalProcessingResponse = {
     isHLS?: boolean,
 }
 
-export type CobaltFileUrlType = "redirect" | "tunnel";
+export type ReliGoFileUrlType = "redirect" | "tunnel";
 
-export type CobaltSession = {
+export type ReliGoSession = {
     token: string,
     exp: number,
 }
@@ -112,14 +112,14 @@ export type ReliGoServerInfo = {
 // TODO: strict partial
 // this allows for extra properties, which is not ideal,
 // but i couldn't figure out how to make a strict partial :(
-export type CobaltSaveRequestBody =
+export type ReliGoSaveRequestBody =
     { url: string } & Partial<Omit<CobaltSettings['save'], 'savingMethod'>>;
 
-export type CobaltSessionResponse = CobaltSession | CobaltErrorResponse;
-export type CobaltServerInfoResponse = CobaltServerInfo | CobaltErrorResponse;
+export type ReliGoSessionResponse = ReliGoSession | ReliGoErrorResponse;
+export type ReliGoServerInfoResponse = CobaltServerInfo | ReliGoErrorResponse;
 
-export type CobaltAPIResponse = CobaltErrorResponse
-                              | CobaltPickerResponse
-                              | CobaltRedirectResponse
-                              | CobaltTunnelResponse
-                              | CobaltLocalProcessingResponse;
+export type ReliGoAPIResponse = ReliGoErrorResponse
+                              | ReliGoPickerResponse
+                              | ReliGoRedirectResponse
+                              | ReliGoTunnelResponse
+                              | ReliGoLocalProcessingResponse;
