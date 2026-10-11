@@ -6,7 +6,7 @@
     import SupportedServices from "$components/save/SupportedServices.svelte";
 
     let apiState: "checking" | "online" | "offline" = "checking";
-    let apiVersion = "—";
+    let apiVersion = "";
 
     const checkApi = async () => {
         try {
@@ -16,7 +16,7 @@
             });
             if (!response.ok) throw new Error("API unavailable");
             const status = await response.json();
-            apiVersion = status.apiVersion ?? status.version ?? "—";
+            apiVersion = status.apiVersion ?? status.version ?? "";
             apiState = "online";
         } catch {
             apiState = "offline";
@@ -29,93 +29,168 @@
 <svelte:head>
     <title>ReliGo — media, in motion</title>
     <meta property="og:title" content="ReliGo — media, in motion" />
-    <meta name="description" content="A cleaner, faster ReliGo experience for media links, processing tools, and live service status." />
+    <meta name="description" content="A calmer, more considered workspace for your media links. Simple tools, thoughtful details, and control when you need it." />
 </svelte:head>
 
-<div class="home-shell">
-    <section class="hero">
-        <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
-        <div class="hero-top"><span class="eyebrow"><span class="spark"></span> RELIGO ECOSYSTEM · 11.4</span><a class="status-link" href="/status"><span class:offline={apiState === "offline"} class="status-dot"></span> API {apiState === "online" ? "online" : apiState === "offline" ? "unreachable" : "checking"} <span>↗</span></a></div>
-        <div class="hero-grid">
-            <div class="hero-copy">
-                <h1>Media,<br /><span>without friction.</span></h1>
-                <p>A focused workspace for turning media links into the files and formats you need. Fast to reach, easy to control, built to stay out of your way.</p>
-                <div class="hero-tags"><span>01 · Paste a link</span><span>02 · Choose a format</span><span>03 · Get moving</span></div>
-            </div>
-            <div class="hero-mark"><div class="mark-orbit orbit-a"></div><div class="mark-orbit orbit-b"></div><div class="mark-core"><Meowbalt emotion="smile" /></div><span class="mark-caption">RELIABLE BY DESIGN</span></div>
-        </div>
-        <div class="hero-bottom"><span>YOUR MEDIA WORKFLOW, REFINED.</span><span>11.4 / ECOSYSTEM REFRESH</span></div>
-    </section>
+<div class="home">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
 
-    <section class="workspace">
-        <div class="section-intro"><div><span class="kicker">THE WORKSPACE</span><h2>Start with a link.</h2></div><p>Paste a supported URL below to begin processing.</p></div>
-        <div class="link-panel"><SupportedServices /><main id="cobalt-save" tabindex="-1" data-first-focus><Omnibox /></main><div class="privacy-note"><span>✳</span> Your settings stay yours. Processing depends on your device and selected API instance.</div></div>
-        <div class="section-intro tools-heading"><div><span class="kicker">MORE CONTROL</span><h2>Tools that work together.</h2></div><p>Quick paths to the rest of ReliGo.</p></div>
-        <div class="tool-grid">
-            <a class="tool-card" href="/remux"><span class="tool-icon">↗</span><span class="tool-label">FORMAT TOOL</span><h3>Remux studio</h3><p>Repackage compatible media without an unnecessary full re-encode.</p><span class="tool-arrow">Explore tool ↗</span></a>
-            <a class="tool-card" href="/settings/appearance"><span class="tool-icon">◉</span><span class="tool-label">PERSONALIZATION</span><h3>Your experience</h3><p>Choose appearance and language, then tune accessibility and motion preferences.</p><span class="tool-arrow">Open settings ↗</span></a>
-            <a class="tool-card" href="/status"><span class="tool-icon">⌁</span><span class="tool-label">LIVE TELEMETRY</span><h3>System status</h3><p>Check the API version, process uptime, configured services, and live JSON.</p><span class="tool-arrow">View status ↗</span></a>
-            <a class="tool-card" href="/updates"><span class="tool-icon">✳</span><span class="tool-label">RELEASE NOTES</span><h3>What's new</h3><p>Explore the 11.4 refresh and previous release notes.</p><span class="tool-arrow">Read updates ↗</span></a>
+    <header class="masthead">
+        <div class="identity">
+            <span class="identity-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="identity-name">ReliGo</span>
+            <span class="identity-divider"></span>
+            <span class="identity-edition">MEDIA WORKSPACE</span>
         </div>
-        <div class="system-strip"><div><span class="system-light" class:offline={apiState === "offline"}></span><div><strong>{apiState === "online" ? "ReliGo API responding" : apiState === "offline" ? "API response not confirmed" : "Checking ReliGo API"}</strong><small>{apiVersion === "—" ? "Live service information is loading" : `API version ${apiVersion} · verified from the server`}</small></div></div><a href={`${officialApiURL}/status`} target="_blank" rel="noreferrer">API JSON ↗</a></div>
-    </section>
+        <a class="service-state" href="/status" aria-label="Open ReliGo system status">
+            <span class="state-dot" class:offline={apiState === "offline"} class:checking={apiState === "checking"}></span>
+            <span>{apiState === "online" ? "All systems ready" : apiState === "offline" ? "Service status" : "Connecting"}</span>
+            <span class="state-arrow" aria-hidden="true">↗</span>
+        </a>
+    </header>
+
+    <main class="stage">
+        <section class="intro" aria-labelledby="main-title">
+            <div class="edition"><span class="edition-line"></span> A LITTLE LESS FRICTION. A LOT MORE FLOW.</div>
+            <h1 id="main-title">Your media.<br /><span>Your way.</span></h1>
+            <p class="lead">One place to turn a link into what you need. Thoughtfully simple on the surface, with the tools and control to do more underneath.</p>
+        </section>
+
+        <section class="workbench" aria-label="Media link workspace">
+            <div class="workbench-top">
+                <div class="workbench-title">
+                    <span class="workbench-index">01</span>
+                    <div><h2>Start with a link</h2><p>Paste a supported media URL to get started.</p></div>
+                </div>
+                <span class="secure-label"><span aria-hidden="true">✳</span> YOUR WORKFLOW</span>
+            </div>
+            <div class="service-list"><SupportedServices /></div>
+            <main id="cobalt-save" tabindex="-1" data-first-focus>
+                <div class="mascot-wrap"><div class="mascot-halo"></div><Meowbalt emotion="smile" /></div>
+                <Omnibox />
+            </main>
+            <div class="workbench-bottom">
+                <span><span class="micro-dot"></span> Clean, focused, ready when you are.</span>
+                <span>LINK <span class="tiny-separator">/</span> FORMAT <span class="tiny-separator">/</span> GO</span>
+            </div>
+        </section>
+
+        <section class="quick-access" aria-label="Quick access">
+            <div class="quick-heading"><span>MADE TO WORK TOGETHER</span><span class="quick-heading-note">EXPLORE RELIGO <span aria-hidden="true">↘</span></span></div>
+            <div class="quick-grid">
+                <a class="quick-link" href="/remux">
+                    <span class="quick-symbol">↗</span>
+                    <span class="quick-copy"><strong>Remux studio</strong><small>Repackage compatible media</small></span>
+                    <span class="quick-arrow">↗</span>
+                </a>
+                <a class="quick-link" href="/settings/appearance">
+                    <span class="quick-symbol">◐</span>
+                    <span class="quick-copy"><strong>Your preferences</strong><small>Appearance, language and access</small></span>
+                    <span class="quick-arrow">↗</span>
+                </a>
+                <a class="quick-link" href="/status">
+                    <span class="quick-symbol">⌁</span>
+                    <span class="quick-copy"><strong>System status</strong><small>{apiState === "online" ? `API ${apiVersion || "online"} · responding` : "Live service information"}</small></span>
+                    <span class="quick-arrow">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>MADE WITH CARE. BUILT TO STAY OUT OF YOUR WAY.</span>
+        <div><a href="/about">ABOUT RELIGO</a><span class="footer-separator"></span><a href="/updates">WHAT'S NEW</a></div>
+    </footer>
 </div>
 
 <style>
-    .home-shell { width:100%; max-width:1240px; margin:0 auto; padding:clamp(6px,1.4vw,18px); box-sizing:border-box; }
-    .ambient { position:absolute; z-index:0; width:clamp(150px,24vw,300px); aspect-ratio:1; border-radius:50%; filter:blur(44px); opacity:.18; pointer-events:none; will-change:transform; animation:ambientDrift 18s ease-in-out infinite alternate; }
-    .ambient-one { top:8%; right:18%; background:linear-gradient(135deg,#6598ff,#b58cff); }
-    .ambient-two { bottom:2%; left:20%; width:clamp(120px,18vw,220px); background:linear-gradient(135deg,#63d9ca,#6a8cff); animation-delay:-8s; }
-    @keyframes ambientDrift { from { transform:translate3d(-10px,-8px,0) scale(.94); } to { transform:translate3d(18px,16px,0) scale(1.06); } }
-    .hero { position:relative; overflow:hidden; isolation:isolate; border:1px solid var(--glass-border); border-radius:32px; padding:clamp(22px,4vw,46px); background:radial-gradient(ellipse at 75% 5%,rgba(89,120,255,.2),transparent 36%),radial-gradient(ellipse at 0% 100%,rgba(50,205,180,.12),transparent 40%),linear-gradient(135deg,var(--glass-surface),var(--button)); box-shadow:0 24px 90px rgba(0,0,0,.07),inset 0 1px 0 rgba(255,255,255,.38); }
-    .hero-top,.hero-bottom,.hero-grid,.hero-tags,.section-intro,.system-strip,.system-strip>div { display:flex; align-items:center; justify-content:space-between; gap:18px; }
-    .hero-top,.hero-bottom { position:relative; z-index:1; }
-    .eyebrow,.kicker,.tool-label,.hero-bottom { font-size:10px; letter-spacing:.14em; font-weight:850; opacity:.65; }
-    .eyebrow { display:flex; align-items:center; gap:9px; }
-    .spark { width:7px; height:7px; background:var(--blue); border-radius:50%; box-shadow:0 0 0 5px rgba(47,138,249,.14); }
-    .status-link { display:flex; align-items:center; gap:8px; padding:10px 13px; border:1px solid var(--glass-border); background:var(--glass-surface); border-radius:999px; text-decoration:none; font-size:11px; font-weight:750; white-space:nowrap; }
-    .status-dot,.system-light { width:7px; height:7px; border-radius:50%; background:#25bb72; flex:0 0 auto; box-shadow:0 0 0 4px rgba(37,187,114,.13); }
-    .status-dot.offline,.system-light.offline { background:#e94c5d; box-shadow:0 0 0 4px rgba(233,76,93,.12); }
-    .hero-grid { position:relative; z-index:1; align-items:center; min-height:300px; }
-    .hero-copy { max-width:680px; padding:25px 0 32px; }
-    h1 { margin:0; font-size:clamp(42px,7.4vw,88px); font-weight:900; line-height:.95; letter-spacing:-.075em; }
-    h1 span { color:var(--blue); }
-    .hero-copy>p { max-width:550px; font-size:clamp(14px,1.4vw,17px); line-height:1.75; opacity:.68; margin:24px 0; }
-    .hero-tags { justify-content:flex-start; flex-wrap:wrap; gap:8px; }
-    .hero-tags span { padding:9px 11px; border-radius:999px; background:var(--glass-surface); border:1px solid var(--glass-border); font-size:10px; font-weight:700; }
-    .hero-mark { position:relative; width:clamp(180px,24vw,290px); aspect-ratio:1; flex:0 0 auto; display:grid; place-items:center; margin-right:clamp(0px,3vw,40px); }
-    .mark-orbit { position:absolute; inset:8%; border:1px solid var(--glass-border); border-radius:50%; }
-    .orbit-a { transform:rotate(-24deg) scaleY(.72); border-style:dashed; }
-    .orbit-b { inset:0; transform:rotate(28deg) scaleY(.78); }
-    .mark-core { width:58%; aspect-ratio:1; display:grid; place-items:center; border-radius:32%; background:var(--glass-surface); border:1px solid var(--glass-border); box-shadow:0 25px 65px rgba(0,0,0,.14),inset 0 1px 0 rgba(255,255,255,.55); }
-    .mark-core :global(img) { max-width:76%; max-height:76%; object-fit:contain; }
-    .mark-caption { position:absolute; bottom:3%; font-size:9px; letter-spacing:.16em; font-weight:800; opacity:.5; }
-    .hero-bottom { border-top:1px solid var(--glass-border); padding-top:17px; }
-    .workspace { padding:clamp(22px,4vw,46px) 0; }
-    .section-intro { align-items:end; margin:10px 2px 18px; }
-    .section-intro h2 { font-size:clamp(25px,3.5vw,39px); letter-spacing:-.055em; margin:7px 0 0; font-weight:850; }
-    .section-intro>p { font-size:12px; opacity:.58; max-width:310px; line-height:1.6; margin:0; }
-    .link-panel { border:1px solid var(--glass-border); border-radius:26px; padding:clamp(16px,3vw,28px); background:var(--glass-surface); box-shadow:0 15px 50px rgba(0,0,0,.04),inset 0 1px rgba(255,255,255,.3); }
-    #cobalt-save { width:100%; }
-    .privacy-note { display:flex; gap:8px; align-items:center; justify-content:center; text-align:center; font-size:10px; opacity:.58; padding-top:16px; }
-    .privacy-note span { color:var(--blue); font-size:14px; }
-    .tools-heading { margin-top:42px; }
-    .tool-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; }
-    .tool-card { min-width:0; padding:22px; border:1px solid var(--glass-border); border-radius:23px; background:var(--glass-surface); text-decoration:none; transition:transform 180ms ease,border-color 180ms ease,box-shadow 180ms ease; box-shadow:inset 0 1px rgba(255,255,255,.28); }
-    .tool-card:hover { transform:translateY(-3px); border-color:rgba(47,138,249,.4); box-shadow:0 15px 40px rgba(0,0,0,.07); }
-    .tool-icon { display:grid; place-items:center; width:42px; height:42px; border-radius:14px; background:var(--button); font-size:22px; margin-bottom:25px; }
-    .tool-label { font-size:9px; }
-    .tool-card h3 { font-size:clamp(17px,2vw,22px); margin:9px 0; letter-spacing:-.04em; }
-    .tool-card p { font-size:12px; line-height:1.7; opacity:.62; min-height:60px; }
-    .tool-arrow { display:block; font-size:11px; font-weight:800; margin-top:18px; }
-    .system-strip { border:1px solid var(--glass-border); border-radius:20px; margin-top:14px; padding:17px 20px; background:var(--button); }
-    .system-strip>div { justify-content:flex-start; }
-    .system-strip strong,.system-strip small { display:block; }
-    .system-strip strong { font-size:12px; }
-    .system-strip small { margin-top:4px; font-size:10px; opacity:.58; }
-    .system-strip>a { font-size:11px; font-weight:800; white-space:nowrap; }
-    @media(max-width:950px) { .tool-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .hero-mark { width:180px; margin-right:0; } }
-    @media(max-width:620px) { .hero { border-radius:24px; padding:20px 17px; } .hero-grid { min-height:0; } .hero-mark { display:none; } .hero-copy { padding:38px 0 30px; } .hero-bottom { font-size:8px; letter-spacing:.08em; } .section-intro { align-items:flex-start; flex-direction:column; gap:7px; } .section-intro>p { max-width:none; } .tool-grid { gap:9px; } .tool-card { padding:16px; border-radius:18px; } .tool-icon { margin-bottom:18px; } .tool-card p { min-height:100px; font-size:11px; } .system-strip { align-items:flex-start; padding:15px; } }
-    @media(max-width:360px) { .tool-grid { grid-template-columns:1fr; } .tool-card p { min-height:0; } .hero-tags span { font-size:9px; } }
-    @media(prefers-reduced-motion:reduce) { .ambient { animation:none; } .tool-card { transition:none; } .tool-card:hover { transform:none; } }
+    .home {
+        --ink: #20201f;
+        --muted: #777773;
+        --line: rgba(30,30,28,.105);
+        --panel: rgba(255,255,253,.66);
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        flex-direction: column;
+        width: min(100%, 1120px);
+        min-height: 100%;
+        margin: 0 auto;
+        padding: clamp(12px,2vw,26px) clamp(2px,1vw,10px) 12px;
+        box-sizing: border-box;
+        color: var(--secondary);
+    }
+    :global([data-theme="dark"]) .home { --ink:#f0f0ed; --muted:#9b9b96; --line:rgba(255,255,255,.12); --panel:rgba(24,24,23,.68); }
+    .grain { position:absolute; z-index:-1; inset:0; opacity:.14; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); mix-blend-mode:soft-light; }
+    .ambient { position:absolute; z-index:-2; width:clamp(220px,35vw,430px); aspect-ratio:1; border-radius:50%; filter:blur(75px); opacity:.12; pointer-events:none; animation:drift 24s ease-in-out infinite alternate; }
+    .ambient-a { top:2%; right:-8%; background:#9eb8e8; }
+    .ambient-b { top:38%; left:-15%; width:clamp(170px,24vw,300px); background:#c5b5a1; animation-delay:-12s; }
+    @keyframes drift { from { transform:translate3d(-8px,-10px,0) scale(.96); } to { transform:translate3d(12px,16px,0) scale(1.04); } }
+    .masthead,.identity,.service-state,.workbench-top,.workbench-title,.workbench-bottom,.quick-heading,.quick-link,.quick-copy,.footer,.footer>div { display:flex; align-items:center; }
+    .masthead { justify-content:space-between; gap:14px; min-height:42px; padding:0 2px; }
+    .identity { gap:11px; min-width:0; }
+    .identity-mark { display:flex; align-items:center; gap:2px; height:20px; }
+    .identity-mark span { display:block; width:3px; border-radius:4px; background:var(--secondary); }
+    .identity-mark span:nth-child(1) { height:10px; opacity:.55; }
+    .identity-mark span:nth-child(2) { height:19px; }
+    .identity-mark span:nth-child(3) { height:14px; opacity:.72; }
+    .identity-name { font-size:16px; font-weight:850; letter-spacing:-.055em; }
+    .identity-divider { width:1px; height:16px; background:var(--line); margin:0 3px; }
+    .identity-edition { font-size:9px; font-weight:750; letter-spacing:.14em; color:var(--muted); }
+    .service-state { gap:8px; padding:9px 12px; border:1px solid var(--line); border-radius:999px; background:var(--panel); backdrop-filter:blur(18px) saturate(1.3); -webkit-backdrop-filter:blur(18px) saturate(1.3); text-decoration:none; font-size:10px; font-weight:700; white-space:nowrap; transition:background .2s ease,border-color .2s ease; }
+    .service-state:hover { border-color:rgba(100,130,180,.38); }
+    .state-dot,.micro-dot { width:6px; height:6px; flex:0 0 auto; border-radius:50%; background:#2aaf78; box-shadow:0 0 0 3px rgba(42,175,120,.12); }
+    .state-dot.offline { background:#d75a5a; box-shadow:0 0 0 3px rgba(215,90,90,.12); }
+    .state-dot.checking { background:#c7a45c; box-shadow:0 0 0 3px rgba(199,164,92,.12); }
+    .state-arrow { opacity:.55; font-size:13px; }
+    .stage { width:100%; max-width:920px; margin:clamp(28px,5vh,56px) auto 0; }
+    .intro { max-width:690px; padding:0 clamp(4px,1vw,10px); }
+    .edition { display:flex; align-items:center; gap:10px; font-size:9px; letter-spacing:.18em; font-weight:800; color:var(--muted); }
+    .edition-line { display:inline-block; width:22px; height:1px; background:var(--muted); opacity:.65; }
+    h1 { margin:22px 0 0; font-size:clamp(48px,8vw,88px); line-height:.96; letter-spacing:-.082em; font-weight:780; color:var(--ink); }
+    h1 span { color:var(--muted); font-weight:500; }
+    .lead { max-width:490px; margin:20px 0 0; font-size:clamp(13px,1.5vw,15px); line-height:1.8; letter-spacing:-.012em; color:var(--muted); }
+    .workbench { position:relative; margin-top:clamp(27px,5vh,48px); border:1px solid var(--line); border-radius:25px; background:var(--panel); backdrop-filter:blur(28px) saturate(1.28); -webkit-backdrop-filter:blur(28px) saturate(1.28); box-shadow:0 22px 70px rgba(20,20,20,.045),inset 0 1px 0 rgba(255,255,255,.48); overflow:hidden; }
+    :global([data-theme="dark"]) .workbench { box-shadow:0 22px 70px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.035); }
+    .workbench-top { justify-content:space-between; gap:16px; padding:22px 25px 17px; border-bottom:1px solid var(--line); }
+    .workbench-title { gap:13px; min-width:0; }
+    .workbench-index { display:grid; place-items:center; width:33px; height:33px; border:1px solid var(--line); border-radius:11px; color:var(--muted); font-size:10px; font-weight:800; flex:0 0 auto; }
+    .workbench-title h2 { margin:0; font-size:16px; font-weight:780; letter-spacing:-.045em; }
+    .workbench-title p { margin:5px 0 0; color:var(--muted); font-size:11px; line-height:1.5; }
+    .secure-label { display:flex; align-items:center; gap:7px; font-size:8px; letter-spacing:.12em; font-weight:800; color:var(--muted); white-space:nowrap; }
+    .secure-label span { font-size:12px; }
+    .service-list { padding:16px 24px 0; }
+    #cobalt-save { display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; box-sizing:border-box; gap:8px; padding:3px 24px 22px; }
+    .mascot-wrap { position:relative; display:grid; place-items:center; width:88px; height:72px; margin:0 auto; }
+    .mascot-halo { position:absolute; width:60px; height:60px; border-radius:50%; background:radial-gradient(circle,rgba(130,145,168,.17),transparent 70%); }
+    #cobalt-save :global(img) { position:relative; width:auto; max-width:80px; max-height:68px; object-fit:contain; filter:drop-shadow(0 7px 12px rgba(0,0,0,.08)); animation:mascotArrive .7s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes mascotArrive { from { opacity:0; transform:translateY(7px) scale(.97); } to { opacity:1; transform:translateY(0) scale(1); } }
+    .workbench-bottom { justify-content:space-between; gap:12px; padding:13px 24px; border-top:1px solid var(--line); color:var(--muted); font-size:9px; }
+    .workbench-bottom>span:first-child { display:flex; align-items:center; gap:8px; }
+    .workbench-bottom .micro-dot { width:5px; height:5px; box-shadow:none; }
+    .tiny-separator { margin:0 6px; opacity:.45; }
+    .quick-access { margin-top:clamp(28px,4vh,40px); }
+    .quick-heading { justify-content:space-between; gap:12px; padding:0 4px 13px; color:var(--muted); font-size:9px; font-weight:800; letter-spacing:.14em; }
+    .quick-heading-note { font-size:8px; letter-spacing:.09em; opacity:.8; }
+    .quick-heading-note span { margin-left:5px; }
+    .quick-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+    .quick-link { min-width:0; gap:12px; padding:16px; border:1px solid var(--line); border-radius:17px; background:var(--panel); text-decoration:none; transition:transform .22s ease,border-color .22s ease,background .22s ease; }
+    .quick-link:hover { transform:translateY(-2px); border-color:rgba(110,130,160,.35); background:var(--button); }
+    .quick-symbol { display:grid; place-items:center; width:36px; height:36px; flex:0 0 auto; border-radius:12px; border:1px solid var(--line); font-size:17px; color:var(--ink); }
+    .quick-copy { align-items:flex-start; flex-direction:column; gap:5px; min-width:0; flex:1; }
+    .quick-copy strong { font-size:11px; font-weight:780; letter-spacing:-.025em; }
+    .quick-copy small { font-size:9px; color:var(--muted); line-height:1.5; }
+    .quick-arrow { font-size:12px; opacity:.45; align-self:flex-start; }
+    .footer { justify-content:space-between; gap:14px; margin-top:auto; padding:30px 3px 3px; color:var(--muted); font-size:8px; letter-spacing:.1em; font-weight:700; }
+    .footer>div { gap:10px; }
+    .footer a { text-decoration:none; transition:opacity .2s ease; }
+    .footer a:hover { opacity:.65; }
+    .footer-separator { width:3px; height:3px; border-radius:50%; background:currentColor; opacity:.5; }
+    @media(max-width:760px) { .stage { margin-top:34px; } .quick-grid { grid-template-columns:1fr; gap:8px; } .quick-link { padding:13px 14px; } .quick-symbol { width:33px; height:33px; } .quick-arrow { align-self:center; } .quick-copy { gap:3px; } .footer { padding-top:24px; } }
+    @media(max-width:535px) { .home { padding-top:2px; } .identity-edition,.identity-divider { display:none; } .service-state { padding:8px 10px; font-size:9px; } .stage { margin-top:36px; } .edition { font-size:8px; letter-spacing:.12em; } h1 { margin-top:20px; font-size:clamp(47px,13vw,68px); } .lead { margin-top:16px; font-size:13px; line-height:1.75; } .workbench { margin-top:28px; border-radius:20px; } .workbench-top { padding:17px 16px 15px; } .workbench-title { gap:10px; } .workbench-title h2 { font-size:14px; } .workbench-title p { font-size:10px; } .secure-label { display:none; } .service-list { padding:13px 14px 0; } #cobalt-save { padding:6px 14px 17px; } .mascot-wrap { height:65px; } .workbench-bottom { padding:12px 15px; font-size:8px; } .workbench-bottom>span:last-child { display:none; } .quick-heading { font-size:8px; } .quick-heading-note { display:none; } .footer { flex-direction:column; align-items:flex-start; gap:12px; padding-top:25px; font-size:8px; } }
+    @media(prefers-reduced-motion:reduce) { .ambient,#cobalt-save :global(img) { animation:none; } .quick-link,.service-state,.footer a { transition:none; } .quick-link:hover { transform:none; } }
+    :global([data-reduce-motion="true"]) .ambient,:global([data-reduce-motion="true"]) #cobalt-save :global(img) { animation:none; }
+    :global([data-reduce-transparency="true"]) .workbench,:global([data-reduce-transparency="true"]) .service-state,:global([data-reduce-transparency="true"]) .quick-link { backdrop-filter:none; -webkit-backdrop-filter:none; background:var(--primary); }
 </style>
