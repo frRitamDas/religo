@@ -19,7 +19,8 @@
 
         if ($cachedInfo) {
             loaded = true;
-            services = $cachedInfo.info.cobalt.services;
+            const instanceInfo = $cachedInfo.info.religo ?? $cachedInfo.info.cobalt;
+            services = instanceInfo?.services ?? [];
         }
     };
 
