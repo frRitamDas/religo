@@ -10,8 +10,6 @@ export function getAllChangelogs() {
     const sortedVersions = Object.keys(changelogImports)
                                  .map(path => [path, getVersionFromPath(path)])
                                  .sort(([, a], [, b]) => {
-                                     if (a === "1.1") return -1;
-                                     if (b === "1.1") return 1;
                                      return compareVersions(a, b);
                                  });
 
