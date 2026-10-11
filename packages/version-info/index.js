@@ -52,7 +52,7 @@ export const getBranch = async () => {
     }
 
     return (await readGit('.git/HEAD'))
-            ?.replace(/^ref: refs\\/heads\\//, '')
+            ?.replace(/^ref: refs\/heads\//, '')
             ?.trim();
 }
 
@@ -72,7 +72,7 @@ export const getRemote = async () => {
         remote = new URL(remote).pathname.substring(1);
     }
 
-    remote = remote?.replace(/\\.git$/, '');
+    remote = remote?.replace(/\.git$/, '');
 
     if (!remote) {
         throw 'could not parse remote';
