@@ -64,14 +64,16 @@
                 if (node.nodeValue) {
                     node.nodeValue = node.nodeValue
                         .replace(/@justusecobalt/gi, "ReliGo")
-                        .replace(/cobalt/gi, "ReliGo");
+                        .replace(/cobalt/gi, "ReliGo")
+                        .replace(/\bimput\b/gi, "ReliGo")
+                        .replace(/meowbalt/gi, "ReliGo");
                 }
             }
 
             changelogRoot.querySelectorAll<HTMLElement>("[alt]").forEach((element) => {
                 const alt = element.getAttribute("alt");
                 if (alt) {
-                    element.setAttribute("alt", alt.replace(/cobalt/gi, "ReliGo"));
+                    element.setAttribute("alt", alt.replace(/cobalt/gi, "ReliGo").replace(/meowbalt/gi, "ReliGo"));
                 }
             });
         }
@@ -178,7 +180,7 @@
     .changelog-title {
         padding: 0;
         line-height: 1.2;
-        font-size: 23px;
+        font-size: clamp(1.4rem, 4.5vw, 2rem);
         user-select: text;
         -webkit-user-select: text;
     }
@@ -224,5 +226,43 @@
 
     .changelog-body {
         width: 100%;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    :global(.changelog-body h2) {
+        margin: 1.8em 0 0.55em;
+        font-size: clamp(1.25rem, 3.3vw, 1.65rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+    }
+
+    :global(.changelog-body h3) {
+        margin: 1.35em 0 0.4em;
+        font-size: clamp(1.05rem, 2.8vw, 1.25rem);
+        line-height: 1.3;
+    }
+
+    :global(.changelog-body > p) {
+        max-width: 72ch;
+        margin-inline: auto;
+    }
+
+    :global(.changelog-body img) {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        border-radius: calc(var(--padding) / 2);
+    }
+
+    :global(.changelog-body ul),
+    :global(.changelog-body ol) {
+        padding-inline-start: 1.35rem;
+    }
+
+    :global(.changelog-body a) {
+        text-underline-offset: 0.2em;
+        text-decoration-thickness: 1px;
+        overflow-wrap: anywhere;
     }
 </style>
