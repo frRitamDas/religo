@@ -116,7 +116,7 @@ export type ReliGoSaveRequestBody =
     { url: string } & Partial<Omit<CobaltSettings['save'], 'savingMethod'>>;
 
 export type ReliGoSessionResponse = ReliGoSession | ReliGoErrorResponse;
-export type ReliGoServerInfoResponse = CobaltServerInfo | ReliGoErrorResponse;
+export type ReliGoServerInfoResponse = ReliGoServerInfo | ReliGoErrorResponse;
 
 export type ReliGoAPIResponse = ReliGoErrorResponse
                               | ReliGoPickerResponse
