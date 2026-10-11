@@ -3,7 +3,7 @@ import { defaultLocale } from "$lib/i18n/translations";
 import type { CobaltSettings } from "$lib/types/settings";
 
 const defaultSettings: CobaltSettings = {
-    schemaVersion: 6,
+    schemaVersion: 7,
     advanced: {
         debug: false,
         useWebCodecs: false,
@@ -19,6 +19,7 @@ const defaultSettings: CobaltSettings = {
         reduceTransparency: false,
         disableHaptics: false,
         dontAutoOpenQueue: false,
+        enableNotifications: false,
     },
     save: {
         alwaysProxy: false,
