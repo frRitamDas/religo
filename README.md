@@ -1,61 +1,26 @@
-<div align="center">
-    <br/>
-    <p>
-        <img src="web/static/favicon.png" title="cobalt" alt="cobalt logo" width="100" />
-    </p>
-    <p>
-        best way to save what you love
-        <br/>
-        <a href="https://cobalt.tools">
-            cobalt.tools
-        </a>
-    </p>
-    <p>
-        <a href="https://discord.gg/pQPt8HBUPu">
-            💬 community discord server
-        </a>
-        <br/>
-        <a href="https://x.com/justusecobalt">
-            🐦 twitter
-        </a>
-        <a href="https://bsky.app/profile/cobalt.tools">
-            🦋 bluesky
-        </a>
-    </p>
-    <br/>
-</div>
+# ReliGo
 
-cobalt is a media downloader that doesn't piss you off. it's friendly, efficient, and doesn't have ads, trackers, paywalls or other nonsense.
+ReliGo is a community-maintained media downloader based on the open-source [Cobalt project](https://github.com/imputnet/cobalt). Paste a supported public media link, choose the available options, and save the result.
 
-paste the link, get the file, move on. that simple, just how it should be.
+This repository is a customized fork. The original upstream project and its licenses are credited here; see the [web license](web/LICENSE) and [API license](api/LICENSE) before redistributing or hosting it.
 
-### cobalt monorepo
-this monorepo includes source code for api, frontend, and related packages:
-- [api tree & readme](/api/)
-- [web tree & readme](/web/)
-- [packages tree](/packages/)
+## Project structure
 
-it also includes documentation in the [docs tree](/docs/):
-- [how to run a cobalt instance](/docs/run-an-instance.md)
-- [how to protect a cobalt instance](/docs/protect-an-instance.md)
-- [cobalt api instance environment variables](/docs/api-env-variables.md)
-- [cobalt api documentation](/docs/api.md)
+This monorepo includes the frontend, API, and related packages:
 
-### ethics
-cobalt is a tool that makes downloading public content easier. it takes **zero liability**.
-the end user is responsible for what they download, how they use and distribute that content.
-cobalt never caches any content, it [works like a fancy proxy](/api/src/stream/).
+- [Frontend](web/) — SvelteKit + Vite static web application.
+- [API](api/) — Express-based media processing service.
+- [Shared packages](packages/).
+- [Documentation](docs/).
 
-cobalt is in no way a piracy tool and cannot be used as such.
-it can only download free & publicly accessible content.
-same content can be downloaded via dev tools of any modern web browser.
+## Deployment notes
 
-### contributing
-if you're considering contributing to cobalt, first of all, thank you! check the [contribution guidelines here](/CONTRIBUTING.md) before getting started, they'll help you do your best right away.
+The frontend can be built as a static site, but media downloads that require server processing need a compatible API instance. Configure the frontend with the `WEB_DEFAULT_API` environment variable pointing to an API instance you own or are authorized to use. The upstream public API is not a default service for unrelated deployments.
 
-### thank you
-cobalt is sponsored by [royalehosting.net](https://royalehosting.net/?partner=cobalt). a part of our infrastructure is hosted on their network. we really appreciate their kindness and support!
+The API uses long-running streaming and media-processing behavior. Deploy it on infrastructure compatible with the project's API requirements; a static frontend deployment alone does not deploy the API.
 
-### licenses
-for relevant licensing information, see the [api](api/README.md) and [web](web/README.md) READMEs.
-unless specified otherwise, the remainder of this repository is licensed under [AGPL-3.0](LICENSE).
+## Attribution and licensing
+
+ReliGo is based on [imputnet/cobalt](https://github.com/imputnet/cobalt). The original project's license terms apply to the relevant code. The upstream frontend license also states that Cobalt branding and assets are not included in the code license; the existing logo is retained temporarily as requested, but should be replaced before public redistribution of a rebranded derivative.
+
+Please review all license files before making the project public or using it commercially.
