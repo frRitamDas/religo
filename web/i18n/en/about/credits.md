@@ -13,10 +13,14 @@
 
 ReliGo is developed and maintained by **Ritam Das**.
 
-- **Website version:** 11.3
-- **API version:** 11.3
-- **Project:** ReliGo
-- **Source code:** [github.com/frRitamDas/religo]({contacts.github})
+**Website version:** 11.3
+
+**API version:** 11.3
+
+**Project:** ReliGo
+
+**Source code:** [github.com/frRitamDas/religo]({contacts.github})
+
 </section>
 
 <section id="source">
