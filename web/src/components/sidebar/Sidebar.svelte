@@ -57,9 +57,13 @@
     #sidebar {
         position: fixed;
         z-index: 20;
+        position: fixed;
         top: max(14px, env(safe-area-inset-top));
         left: 50%;
-        transform: translateX(-50%);
+        margin: 0;
+        transform: translate3d(-50%, 0, 0);
+        isolation: isolate;
+        contain: layout style;
         width: max-content;
         max-width: calc(100vw - 28px);
         height: auto;
@@ -69,9 +73,10 @@
         border-radius: 999px;
         background: var(--glass-surface);
         color: var(--secondary);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.14);
-        backdrop-filter: blur(24px) saturate(160%);
-        -webkit-backdrop-filter: blur(24px) saturate(160%);
+        box-shadow: 0 18px 54px rgba(0, 0, 0, 0.18), 0 3px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.24);
+        backdrop-filter: blur(32px) saturate(185%);
+        -webkit-backdrop-filter: blur(32px) saturate(185%);
+        transition: background-color 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
     }
 
     #sidebar-tabs {
@@ -97,11 +102,15 @@
     @media screen and (max-width: 535px) {
         #sidebar {
             top: auto;
+            position: fixed;
+            top: auto;
             bottom: calc(10px + env(safe-area-inset-bottom));
             width: max-content;
             max-width: calc(100vw - 20px);
-            padding: 6px 8px;
+            padding: 7px 9px;
             gap: 0;
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
         }
 
         #sidebar::before { content: none; }
@@ -120,6 +129,12 @@
         }
 
         #sidebar :global(#cobalt-logo) { display: none; }
+    }
+
+    :global([data-reduce-transparency="true"]) #sidebar {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background: var(--sidebar-bg);
     }
 
     @media (prefers-reduced-transparency: reduce) {
