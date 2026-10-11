@@ -44,6 +44,16 @@
         const to_focus: HTMLElement | null =
             document.querySelector("[data-first-focus]");
         to_focus?.focus();
+
+        // Keep historical release-note links inside the ReliGo repository.
+        document.querySelectorAll<HTMLAnchorElement>(
+            "#changelog-parent .changelog-body a[href^=\"https://github.com/imputnet/cobalt\"]"
+        ).forEach((link) => {
+            link.href = link.href.replace(
+                "https://github.com/imputnet/cobalt",
+                "https://github.com/frRitamDas/religo"
+            );
+        });
     });
 </script>
 
