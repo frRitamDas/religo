@@ -2,7 +2,7 @@
 
 ReliGo is a community-maintained media downloader based on the open-source [Cobalt project](https://github.com/imputnet/cobalt). Paste a supported public media link, choose the available options, and save the result.
 
-**Version:** 1.1  
+**Version:** 11.3  
 **Developer:** Ritam Das  
 **Source code:** https://github.com/frRitamDas/religo
 
