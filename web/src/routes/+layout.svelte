@@ -107,6 +107,7 @@
         data-mobile={device.is.mobile}
         data-reduce-motion={reduceMotion}
         data-reduce-transparency={reduceTransparency}
+        data-ui-density={$settings.appearance.uiDensity}
     >
         {#if device.is.iPhone && app.is.installed}
             <NotchSticker />
