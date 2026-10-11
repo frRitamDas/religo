@@ -144,4 +144,7 @@
     @media(prefers-reduced-motion:reduce) { .tool-card,.quiet-link,.footer a { transition:none; }.tool-card:hover { transform:none; } }
     :global([data-reduce-motion="true"]) .tool-card { transition:none; }
     :global([data-reduce-transparency="true"]) .link-panel,:global([data-reduce-transparency="true"]) .status-link { backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--primary); }
+
+    .wordmark { display:none; }
+    @media(max-width:535px) { .wordmark { display:flex; } }
 </style>
